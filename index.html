@@ -740,7 +740,7 @@ window.submitAllPraises = async function() {
 // ══════════════════════════════════════════
 function loadMyPraises() {
   if (unsubPraises) unsubPraises();
-  const q = query(collection(db, 'praises'), where('authorUid', '==', currentUser?.uid), orderBy('createdAt', 'desc'));
+  const q = query(collection(db, 'praises'), where('authorUid', '==', currentUser?.uid));
   unsubPraises = onSnapshot(q, snap => {
     allPraisesCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderMyPraises();
@@ -900,7 +900,7 @@ window.showStudentModal = async function(uid, name, sid) {
   modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
   document.body.appendChild(modal);
   try {
-    const q = query(collection(db, 'praises'), where('authorUid','==',uid), orderBy('createdAt','desc'));
+const q = query(collection(db, 'praises'), where('authorUid','==',uid));
     const snap = await getDocs(q);
     const praises = snap.docs.map(d => d.data());
     const mentorCount  = praises.filter(p => p.type === 'mentor').length;
