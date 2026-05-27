@@ -33,114 +33,39 @@
     --radius-sm: 8px;
   }
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  /* ── 레이아웃 ── */
-  .app { max-width: 640px; margin: 0 auto; padding: 24px 16px 48px; }
+  .app { max-width: 700px; margin: 0 auto; padding: 24px 16px 60px; }
 
-  .logo-wrap {
-    text-align: center;
-    padding: 32px 0 24px;
-  }
+  .logo-wrap { text-align: center; padding: 32px 0 24px; }
   .logo-emoji { font-size: 48px; line-height: 1; display: block; margin-bottom: 10px; }
   .logo-title { font-size: 26px; font-weight: 700; color: var(--primary); letter-spacing: -0.5px; }
   .logo-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
 
-  /* ── 카드 ── */
-  .card {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 24px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(59,91,219,0.07);
-  }
-  .card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px; border: 1px solid rgba(59,91,219,0.07); }
+  .card-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
   .card-title .icon { font-size: 20px; }
 
-  /* ── 폼 요소 ── */
   .form-group { margin-bottom: 14px; }
-  .form-group:last-of-type { margin-bottom: 0; }
-  label.field-label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
+  label.field-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
   .field-hint { font-size: 11px; color: #9CA3AF; margin-left: 4px; font-weight: 400; }
 
-  input[type="text"],
-  input[type="password"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: var(--white);
-    transition: border-color .2s, box-shadow .2s;
-    outline: none;
-    -webkit-appearance: none;
+  input[type="text"], input[type="password"], select, textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px; color: var(--text); background: var(--white);
+    transition: border-color .2s, box-shadow .2s; outline: none; -webkit-appearance: none;
   }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(59,91,219,0.12);
-  }
-  textarea { height: 110px; resize: vertical; line-height: 1.6; }
+  input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59,91,219,0.12); }
+  textarea { height: 100px; resize: vertical; line-height: 1.6; }
   select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
 
-  /* ── 버튼 ── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 11px 20px;
-    border-radius: var(--radius-sm);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    transition: all .18s;
-    white-space: nowrap;
-  }
-  .btn-primary {
-    background: var(--primary);
-    color: #fff;
-    width: 100%;
-    padding: 13px;
-    font-size: 16px;
-    border-radius: 10px;
-  }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 20px; border-radius: var(--radius-sm); font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all .18s; white-space: nowrap; }
+  .btn-primary { background: var(--primary); color: #fff; width: 100%; padding: 13px; font-size: 16px; border-radius: 10px; }
   .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(59,91,219,0.25); }
   .btn-primary:active { transform: translateY(0); }
   .btn-primary:disabled { background: #A5B4FC; cursor: not-allowed; transform: none; box-shadow: none; }
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid var(--border);
-    color: var(--text-muted);
-    font-size: 13px;
-    padding: 7px 14px;
-    border-radius: var(--radius-sm);
-  }
+  .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-muted); font-size: 13px; padding: 7px 14px; border-radius: var(--radius-sm); }
   .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
   .btn-sm { padding: 6px 12px; font-size: 13px; }
   .btn-danger { background: var(--error-bg); color: var(--error); border: 1.5px solid #FCA5A5; }
@@ -148,71 +73,22 @@
   .btn-green { background: #D1FAE5; color: #065F46; border: 1.5px solid #6EE7B7; }
   .btn-green:hover { background: #A7F3D0; }
 
-  /* ── 탭 ── */
-  .tabs {
-    display: flex;
-    background: #EEF2FF;
-    border-radius: 10px;
-    padding: 4px;
-    margin-bottom: 20px;
-    gap: 4px;
-  }
-  .tab-btn {
-    flex: 1;
-    padding: 9px 8px;
-    border: none;
-    background: transparent;
-    border-radius: 7px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: #6B7280;
-    cursor: pointer;
-    transition: all .18s;
-  }
-  .tab-btn.active {
-    background: var(--white);
-    color: var(--primary);
-    font-weight: 700;
-    box-shadow: 0 1px 4px rgba(59,91,219,0.12);
-  }
+  .tabs { display: flex; background: #EEF2FF; border-radius: 10px; padding: 4px; margin-bottom: 20px; gap: 4px; }
+  .tab-btn { flex: 1; padding: 9px 8px; border: none; background: transparent; border-radius: 7px; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 500; color: #6B7280; cursor: pointer; transition: all .18s; }
+  .tab-btn.active { background: var(--white); color: var(--primary); font-weight: 700; box-shadow: 0 1px 4px rgba(59,91,219,0.12); }
 
-  /* ── 알림 ── */
-  .alert {
-    padding: 11px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    margin-bottom: 14px;
-    display: none;
-    line-height: 1.5;
-  }
+  .alert { padding: 11px 14px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 14px; display: none; line-height: 1.5; }
   .alert.show { display: block; }
   .alert-error { background: var(--error-bg); color: var(--error); border: 1px solid #FCA5A5; }
   .alert-success { background: var(--success-bg); color: var(--success); border: 1px solid #86EFAC; }
   .alert-info { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #A5B4FC; }
 
-  /* ── 뱃지 ── */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-  }
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
   .badge-mentor { background: var(--mentor-bg); color: var(--mentor-text); border: 1px solid var(--mentor-border); }
   .badge-general { background: var(--general-bg); color: var(--general-text); border: 1px solid var(--general-border); }
   .badge-teacher { background: #E0F2FE; color: #0369A1; border: 1px solid #7DD3FC; }
 
-  /* ── 칭찬 아이템 ── */
-  .praise-item {
-    padding: 14px;
-    border-radius: var(--radius-sm);
-    margin-bottom: 10px;
-    border: 1.5px solid;
-    transition: transform .15s;
-  }
+  .praise-item { padding: 14px; border-radius: var(--radius-sm); margin-bottom: 10px; border: 1.5px solid; transition: transform .15s; }
   .praise-item:hover { transform: translateY(-1px); }
   .praise-item.mentor { background: var(--mentor-bg); border-color: var(--mentor-border); }
   .praise-item.general { background: var(--general-bg); border-color: var(--general-border); }
@@ -220,283 +96,235 @@
   .praise-arrow { font-weight: 700; color: var(--primary); }
   .praise-content { font-size: 14px; line-height: 1.7; color: var(--text); }
 
-  /* ── 통계 그리드 ── */
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .stat-card {
-    background: var(--primary-light);
-    border-radius: var(--radius-sm);
-    padding: 16px;
-    text-align: center;
-    border: 1px solid #C7D2FE;
-  }
+  .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat-card { background: var(--primary-light); border-radius: var(--radius-sm); padding: 16px; text-align: center; border: 1px solid #C7D2FE; }
   .stat-num { font-size: 28px; font-weight: 700; color: var(--primary); }
   .stat-label { font-size: 12px; color: #4338CA; margin-top: 2px; font-weight: 500; }
 
-  /* ── 헤더 ── */
-  .page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+  .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
   .page-header-title { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 
-  /* ── 필터 ── */
-  .filter-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
+  .filter-row { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
   .filter-row select, .filter-row input { flex: 1; min-width: 120px; font-size: 14px; padding: 9px 12px; }
 
-  /* ── 회원 목록 ── */
-  .user-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 14px;
-    background: #FAFAFA;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    margin-bottom: 8px;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+  .user-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #FAFAFA; border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 8px; gap: 8px; flex-wrap: wrap; }
   .user-info { display: flex; align-items: center; gap: 10px; }
-  .user-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 700;
-    font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .user-name { font-weight: 700; font-size: 15px; }
   .user-sid { font-size: 12px; color: var(--text-muted); }
   .user-count { font-size: 13px; color: var(--text-muted); }
 
-  /* ── 로딩 ── */
-  .loading {
-    text-align: center;
-    padding: 32px;
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-  .spinner {
-    width: 28px; height: 28px;
-    border: 3px solid #E0E7FF;
-    border-top-color: var(--primary);
-    border-radius: 50%;
-    animation: spin .7s linear infinite;
-    margin: 0 auto 12px;
-  }
+  .loading { text-align: center; padding: 32px; color: var(--text-muted); font-size: 14px; }
+  .spinner { width: 28px; height: 28px; border: 3px solid #E0E7FF; border-top-color: var(--primary); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 12px; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .empty-state {
-    text-align: center;
-    padding: 32px 16px;
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.8;
-  }
+  .empty-state { text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 14px; line-height: 1.8; }
   .empty-state .empty-icon { font-size: 36px; display: block; margin-bottom: 10px; }
 
-  /* ── 반응형 ── */
-  @media (max-width: 480px) {
-    .stat-grid { grid-template-columns: repeat(2, 1fr); }
-    .card { padding: 18px; }
-    .logo-title { font-size: 22px; }
-  }
+  @media (max-width: 480px) { .card { padding: 18px; } .logo-title { font-size: 22px; } }
 
-  /* ── 페이지 전환 ── */
   .page { display: none; }
   .page.active { display: block; animation: fadeIn .25s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-  /* ── 설정 안내 오버레이 ── */
-  #setup-overlay {
-    position: fixed; inset: 0;
-    background: rgba(26,26,46,0.7);
-    z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  #setup-box {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 28px;
-    max-width: 520px;
-    width: 100%;
-    box-shadow: var(--shadow-md);
-  }
+  #setup-overlay { position: fixed; inset: 0; background: rgba(26,26,46,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  #setup-box { background: var(--white); border-radius: var(--radius); padding: 28px; max-width: 520px; width: 100%; box-shadow: var(--shadow-md); }
   #setup-box h2 { font-size: 20px; margin-bottom: 12px; color: var(--primary); }
   #setup-box p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 12px; }
-  .code-block {
-    background: #1E1E3F;
-    color: #A5B4FC;
-    border-radius: 8px;
-    padding: 14px 16px;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    line-height: 1.6;
-    overflow-x: auto;
-    margin-bottom: 14px;
-    white-space: pre;
-  }
+  .code-block { background: #1E1E3F; color: #A5B4FC; border-radius: 8px; padding: 14px 16px; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.6; overflow-x: auto; margin-bottom: 14px; white-space: pre; }
   .setup-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
-  .setup-num {
-    min-width: 24px; height: 24px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
+  .setup-num { min-width: 24px; height: 24px; background: var(--primary); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+  /* ── 칭찬 작성 폼 (멀티) ── */
+  .section-block {
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 2px solid;
+  }
+  .section-block.general { border-color: var(--general-border); }
+  .section-block.mentor  { border-color: var(--mentor-border); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .section-block.general .section-header { background: var(--general-bg); color: var(--general-text); }
+  .section-block.mentor  .section-header { background: var(--mentor-bg);  color: var(--mentor-text); }
+
+  .section-body { background: var(--white); padding: 16px 20px; }
+
+  /* 예시 버튼 */
+  .example-toggle-btn {
+    font-size: 12px; font-weight: 700; padding: 5px 12px;
+    border-radius: 20px; cursor: pointer; border: 1.5px solid;
+    font-family: 'Noto Sans KR', sans-serif; transition: all .15s;
+    background: white;
+  }
+  .general .example-toggle-btn { border-color: var(--general-border); color: var(--general-text); }
+  .general .example-toggle-btn:hover { background: var(--general-bg); }
+  .mentor  .example-toggle-btn { border-color: var(--mentor-border);  color: var(--mentor-text); }
+  .mentor  .example-toggle-btn:hover { background: var(--mentor-bg); }
+
+  /* 예시 패널 */
+  .example-panel {
+    display: none;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .example-panel.show { display: block; }
+  .section-block.general .example-panel { background: #EBF5FF; border: 1px solid var(--general-border); color: var(--general-text); }
+  .section-block.mentor  .example-panel { background: #FFF8EC; border: 1px solid var(--mentor-border);  color: var(--mentor-text); }
+  .example-panel p { margin-bottom: 8px; }
+  .example-panel p:last-child { margin-bottom: 0; }
+
+  /* 칭찬 입력 행 */
+  .praise-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+    animation: fadeIn .2s ease;
+  }
+  .praise-row-num {
+    width: 26px; height: 26px; min-width: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    margin-top: 12px; flex-shrink: 0;
+  }
+  .section-block.general .praise-row-num { background: var(--general-bg); color: var(--general-text); }
+  .section-block.mentor  .praise-row-num { background: var(--mentor-bg);  color: var(--mentor-text); }
+
+  .praise-row-fields { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .praise-row-fields input { font-size: 14px; padding: 10px 12px; }
+  .praise-row-fields textarea { height: 80px; font-size: 14px; padding: 10px 12px; }
+
+  .remove-row-btn {
+    width: 28px; height: 28px; min-width: 28px;
+    border: none; background: #FEE2E2; color: var(--error);
+    border-radius: 50%; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 10px; flex-shrink: 0; transition: background .15s;
+  }
+  .remove-row-btn:hover { background: #FCA5A5; }
+
+  .add-row-btn {
+    width: 100%; padding: 10px;
+    border: 2px dashed; border-radius: var(--radius-sm);
+    background: transparent; font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: all .15s; margin-top: 4px;
+  }
+  .section-block.general .add-row-btn { border-color: var(--general-border); color: var(--general-text); }
+  .section-block.general .add-row-btn:hover { background: var(--general-bg); }
+  .section-block.mentor  .add-row-btn { border-color: var(--mentor-border);  color: var(--mentor-text); }
+  .section-block.mentor  .add-row-btn:hover { background: var(--mentor-bg); }
+  .add-row-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* 수정 모달 */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; box-sizing: border-box;
+  }
+  .modal-box {
+    background: #fff; border-radius: 16px; padding: 28px;
+    max-width: 500px; width: 100%; max-height: 82vh;
+    overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+  }
+  .modal-close {
+    background: none; border: none; font-size: 24px;
+    cursor: pointer; color: var(--text-muted); line-height: 1;
+  }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════
-     Firebase 미설정 시 안내 오버레이
-     설정 완료 후 아래 div 전체를 삭제하세요
-══════════════════════════════════════════════ -->
+<!-- 설정 안내 오버레이 -->
 <div id="setup-overlay">
   <div id="setup-box">
     <h2>🔧 Firebase 설정 필요</h2>
     <p>아래 순서대로 설정하면 앱이 바로 동작합니다.<br>완료 후 이 파일의 <strong>firebaseConfig</strong> 부분을 교체하고, 아래 오버레이 div를 삭제하세요.</p>
-
-    <div class="setup-step">
-      <div class="setup-num">1</div>
-      <div style="font-size:14px;color:var(--text)"><strong>firebase.google.com</strong> → 프로젝트 생성 → 웹 앱 추가 → firebaseConfig 복사</div>
-    </div>
-    <div class="setup-step">
-      <div class="setup-num">2</div>
-      <div style="font-size:14px;color:var(--text)"><strong>Authentication</strong> 활성화 → 이메일/비밀번호 방식 선택</div>
-    </div>
-    <div class="setup-step">
-      <div class="setup-num">3</div>
-      <div style="font-size:14px;color:var(--text)"><strong>Firestore Database</strong> 활성화 → 아래 보안 규칙 붙여넣기</div>
-    </div>
-    <div class="setup-step">
-      <div class="setup-num">4</div>
-      <div style="font-size:14px;color:var(--text)">담임 계정: Firebase Auth에서 직접 <strong>teacher@praise.app</strong> 수동 생성 → UID 복사</div>
-    </div>
-
+    <div class="setup-step"><div class="setup-num">1</div><div style="font-size:14px;color:var(--text)"><strong>firebase.google.com</strong> → 프로젝트 생성 → 웹 앱 추가 → firebaseConfig 복사</div></div>
+    <div class="setup-step"><div class="setup-num">2</div><div style="font-size:14px;color:var(--text)"><strong>Authentication</strong> 활성화 → 이메일/비밀번호 방식 선택</div></div>
+    <div class="setup-step"><div class="setup-num">3</div><div style="font-size:14px;color:var(--text)"><strong>Firestore Database</strong> 활성화 → 아래 보안 규칙 붙여넣기</div></div>
+    <div class="setup-step"><div class="setup-num">4</div><div style="font-size:14px;color:var(--text)">담임 계정: Firebase Auth에서 직접 <strong>teacher@praise.app</strong> 수동 생성 → UID 복사</div></div>
     <div class="divider"></div>
-    <p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">📋 Firestore 보안 규칙 (복사해서 붙여넣기)</p>
+    <p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">📋 Firestore 보안 규칙</p>
     <div class="code-block">rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // 회원 정보: 담임만 전체 읽기 / 본인만 쓰기
     match /users/{uid} {
       allow read: if request.auth.uid == "여기에_담임_UID";
       allow read: if request.auth.uid == uid;
       allow create: if request.auth.uid == uid;
       allow update: if request.auth.uid == uid;
     }
-
-    // 칭찬: 담임은 전체 / 학생은 본인 작성만 읽기
     match /praises/{praiseId} {
       allow read: if request.auth.uid == "여기에_담임_UID";
       allow read: if resource.data.authorUid == request.auth.uid;
       allow create: if request.auth != null
         && request.resource.data.authorUid == request.auth.uid;
-      allow update, delete: if false;
+      allow update: if request.auth.uid == resource.data.authorUid;
+      allow delete: if false;
     }
   }
 }</div>
-    <button class="btn btn-primary" onclick="document.getElementById('setup-overlay').remove()">
-      설정 완료 — 앱 시작하기
-    </button>
+    <button class="btn btn-primary" onclick="document.getElementById('setup-overlay').remove()">설정 완료 — 앱 시작하기</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     메인 앱
-══════════════════════════════════════════════ -->
 <div class="app">
 
-  <!-- ── 로그인 / 회원가입 ── -->
+  <!-- 로그인 / 회원가입 -->
   <div id="page-auth" class="page active">
     <div class="logo-wrap">
       <span class="logo-emoji">🌟</span>
       <div class="logo-title">칭찬합시다</div>
       <div class="logo-sub" id="class-label">1학년 ○반</div>
     </div>
-
     <div class="card">
       <div class="tabs" id="auth-tabs">
         <button class="tab-btn active" onclick="switchAuthTab('login')">로그인</button>
         <button class="tab-btn" onclick="switchAuthTab('signup')">회원가입</button>
       </div>
-
       <div id="auth-alert" class="alert"></div>
-
-      <!-- 로그인 폼 -->
       <div id="login-form">
-        <div class="form-group">
-          <label class="field-label">이름</label>
-          <input type="text" id="login-name" placeholder="예) 홍길동" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label class="field-label">비밀번호</label>
-          <input type="password" id="login-pw" placeholder="비밀번호" autocomplete="current-password">
-        </div>
-        <div style="margin-top:16px">
-          <button class="btn btn-primary" id="login-btn" onclick="doLogin()">로그인</button>
-        </div>
-        <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:12px">
-          담임 선생님은 별도 계정으로 로그인하세요
-        </p>
+        <div class="form-group"><label class="field-label">이름</label><input type="text" id="login-name" placeholder="예) 홍길동" autocomplete="name"></div>
+        <div class="form-group"><label class="field-label">비밀번호</label><input type="password" id="login-pw" placeholder="비밀번호" autocomplete="current-password"></div>
+        <div style="margin-top:16px"><button class="btn btn-primary" id="login-btn" onclick="doLogin()">로그인</button></div>
+        <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:12px">담임 선생님은 별도 계정으로 로그인하세요</p>
       </div>
-
-      <!-- 회원가입 폼 -->
       <div id="signup-form" style="display:none">
-        <div class="form-group">
-          <label class="field-label">이름 <span class="field-hint">아이디로 사용됩니다</span></label>
-          <input type="text" id="signup-name" placeholder="예) 홍길동" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label class="field-label">학번</label>
-          <input type="text" id="signup-sid" placeholder="예) 10101" inputmode="numeric">
-        </div>
-        <div class="form-group">
-          <label class="field-label">비밀번호 <span class="field-hint">4자리 이상</span></label>
-          <input type="password" id="signup-pw" placeholder="비밀번호 설정" autocomplete="new-password">
-        </div>
-        <div class="form-group">
-          <label class="field-label">비밀번호 확인</label>
-          <input type="password" id="signup-pw2" placeholder="비밀번호 재입력" autocomplete="new-password">
-        </div>
-        <div style="margin-top:16px">
-          <button class="btn btn-primary" id="signup-btn" onclick="doSignup()">가입하기</button>
-        </div>
+        <div class="form-group"><label class="field-label">이름 <span class="field-hint">아이디로 사용됩니다</span></label><input type="text" id="signup-name" placeholder="예) 홍길동" autocomplete="name"></div>
+        <div class="form-group"><label class="field-label">학번</label><input type="text" id="signup-sid" placeholder="예) 10101" inputmode="numeric"></div>
+        <div class="form-group"><label class="field-label">비밀번호 <span class="field-hint">4자리 이상</span></label><input type="password" id="signup-pw" placeholder="비밀번호 설정" autocomplete="new-password"></div>
+        <div class="form-group"><label class="field-label">비밀번호 확인</label><input type="password" id="signup-pw2" placeholder="비밀번호 재입력" autocomplete="new-password"></div>
+        <div style="margin-top:16px"><button class="btn btn-primary" id="signup-btn" onclick="doSignup()">가입하기</button></div>
       </div>
     </div>
   </div>
 
-  <!-- ── 학생 화면 ── -->
+  <!-- 학생 화면 -->
   <div id="page-student" class="page">
     <div class="page-header">
-      <div class="page-header-title">
-        <span id="student-welcome-name"></span>
-      </div>
+      <div class="page-header-title"><span id="student-welcome-name"></span></div>
       <button class="btn btn-outline" onclick="doLogout()">로그아웃</button>
     </div>
 
@@ -509,28 +337,47 @@ service cloud.firestore {
     <div id="student-write">
       <div id="write-alert" class="alert"></div>
 
-      <div class="card">
-        <div class="card-title"><span class="icon">✏️</span> 칭찬 작성</div>
-
-        <div class="form-group">
-          <label class="field-label">칭찬 유형</label>
-          <select id="praise-type">
-            <option value="general">💬 일반 칭찬</option>
-            <option value="mentor">🤝 멘토·멘티 칭찬</option>
-          </select>
+      <!-- 일반 칭찬 섹션 -->
+      <div class="section-block general card" style="padding:0;">
+        <div class="section-header">
+          <span>💬 일반 칭찬</span>
+          <button class="example-toggle-btn" onclick="toggleExample('general-example', this)">📖 예시 보기</button>
         </div>
-        <div class="form-group">
-          <label class="field-label">칭찬할 친구 이름</label>
-          <input type="text" id="target-name" placeholder="친구 이름">
-        </div>
-        <div class="form-group">
-          <label class="field-label">칭찬 내용 <span class="field-hint">구체적으로 적어주세요</span></label>
-          <textarea id="praise-content" placeholder="예) 수학 개념을 모를 때 포기하지 않고 세 번이나 알기 쉽게 설명해줬어. 덕분에 시험에서 그 문제를 맞출 수 있었어."></textarea>
-        </div>
-        <div style="margin-top:4px">
-          <button class="btn btn-primary" id="submit-btn" onclick="submitPraise()">🚀 제출하기</button>
+        <div class="section-body">
+          <div id="general-example" class="example-panel">
+            <p>✏️ 아래는 실제 칭찬 예시예요. 이처럼 구체적으로 써주세요!</p>
+            <p>① 항상 학문에 탐구할 정도로 그 호기심과 학업 능력이 뛰어납니다. 기숙사에서도 항상 기숙사 친구들과 새로운 것에 대해 토론하고 있으며 질문이 있는 친구들은 항상 제민이네 방에 갈 정도로 학업 능력이 매우 뛰어납니다.</p>
+            <p>② 부반장으로서 구심점 역할을 해주는 친구입니다. 다양한 반에서 온 친구들을 하나로 모으는 데 큰 역할을 해주었으며 덕분에 반이 단합될 수 있었습니다. 또한 매일 아침마다 가장 먼저 등교해서 공부하는 친구입니다.</p>
+            <p>③ 자신의 목표가 뚜렷한 만큼 그 행동 역시 치밀하며 능력 또한 출중합니다. 재치있는 반응에 친구들을 함께 하는 것을 좋아하며 그런 친구들을 잘 챙겨줍니다.</p>
+            <p>④ 반장으로서 수업 전에 학생들을 조용히 시키며 반의 질서를 유지하기 위해 노력합니다. 수업시간에 적극적으로 참여하여 반 분위기를 살리는 데 일조하며, 항상 즐겁게 사는 것 같아 주변 친구들에게도 웃음을 선사합니다.</p>
+            <p>⑤ 맡은 모든 일을 성실히 열심히 합니다. 수업 시간이나 쉬는 시간에 다른 친구들이 다 자도 깨서 열심히 공부하는 모습을 많이 볼 수 있었습니다. 여가시간에도 코딩을 하며 동아리 활동을 하는 모습에서 꿈을 이룰 수 있을 것이라 생각합니다.</p>
+          </div>
+          <div id="general-rows"></div>
+          <button class="add-row-btn" id="general-add-btn" onclick="addRow('general')">＋ 칭찬 추가하기 <span id="general-count-label" style="font-weight:400;font-size:12px;">(5/25)</span></button>
         </div>
       </div>
+
+      <!-- 멘토멘티 칭찬 섹션 -->
+      <div class="section-block mentor card" style="padding:0;">
+        <div class="section-header">
+          <span>🤝 멘토·멘티 칭찬</span>
+          <button class="example-toggle-btn" onclick="toggleExample('mentor-example', this)">📖 예시 보기</button>
+        </div>
+        <div class="section-body">
+          <div id="mentor-example" class="example-panel">
+            <p>✏️ 멘토·멘티 활동을 중심으로 구체적으로 써주세요!</p>
+            <p>① (멘토) 지구과학에 대해 다양한 지식을 갖고 있는 친구로, 교과 내용 이외에 천문학에 대해 질문할 때도 많은 대답을 해주고, 둘 다 모르는 내용이 있을 때는 관심을 갖고 같이 찾아주는 모습을 볼 수 있었습니다.</p>
+            <p>② (멘토) 수학 킬러 문제에 대한 접근법을 정리한 공책을 바탕으로 다양한 학생들에게 점심시간에 개념설명을 해주는 모습을 보면서 멘토로서의 활동을 잘하고 있다고 생각됩니다.</p>
+            <p>③ (멘토) 모르는 수학문제에 대해서 자신이 생각해낸 방법, 다른 방법 등 여러 가지 문제푸는 방법을 알기 쉽게 잘 알려주었습니다.</p>
+            <p>④ (멘티) 물리 문제를 자주 질문하는 친구로, 말해준 것을 자신의 이해와 비교하는 것을 보아 배운 것을 자신의 것으로 만들기 위해 노력하는 모습을 많이 볼 수 있습니다.</p>
+            <p>⑤ (멘티) 공부 방법을 조언 받거나 질문하는 데 있어서 언제나 적극적인 자세를 보이며, 답변자의 말을 언제나 귀 기울여 듣는 태도에 있어서는 최고라고 할 수 있는 친구입니다.</p>
+          </div>
+          <div id="mentor-rows"></div>
+          <button class="add-row-btn" id="mentor-add-btn" onclick="addRow('mentor')">＋ 칭찬 추가하기 <span id="mentor-count-label" style="font-weight:400;font-size:12px;">(5/25)</span></button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="submit-btn" onclick="submitAllPraises()" style="margin-top:4px;">🚀 전체 제출하기</button>
     </div>
 
     <!-- 내 기록 탭 -->
@@ -539,50 +386,26 @@ service cloud.firestore {
     </div>
   </div>
 
-  <!-- ── 담임 화면 ── -->
+  <!-- 담임 화면 -->
   <div id="page-teacher" class="page">
     <div class="page-header">
-      <div class="page-header-title">
-        🏫 담임 대시보드
-        <span class="badge badge-teacher">선생님</span>
-      </div>
+      <div class="page-header-title">🏫 담임 대시보드 <span class="badge badge-teacher">선생님</span></div>
       <button class="btn btn-outline" onclick="doLogout()">로그아웃</button>
     </div>
-
-    <!-- 통계 -->
     <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-num" id="stat-total">—</div>
-        <div class="stat-label">전체 칭찬</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-students">—</div>
-        <div class="stat-label">참여 학생</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-mentor">—</div>
-        <div class="stat-label">멘토·멘티</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-general">—</div>
-        <div class="stat-label">일반 칭찬</div>
-      </div>
+      <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">전체 칭찬</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-students">—</div><div class="stat-label">참여 학생</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-mentor">—</div><div class="stat-label">멘토·멘티</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-general">—</div><div class="stat-label">일반 칭찬</div></div>
     </div>
-
     <div class="tabs" id="teacher-tabs">
       <button class="tab-btn active" onclick="switchTeacherTab('praises')">📜 칭찬 목록</button>
       <button class="tab-btn" onclick="switchTeacherTab('members')">👥 회원 목록</button>
     </div>
-
-    <!-- 칭찬 목록 탭 -->
     <div id="teacher-praises">
       <div class="card">
         <div class="filter-row">
-          <select id="filter-type" onchange="renderTeacherList()">
-            <option value="all">전체 유형</option>
-            <option value="general">일반 칭찬</option>
-            <option value="mentor">멘토·멘티</option>
-          </select>
+          <select id="filter-type" onchange="renderTeacherList()"><option value="all">전체 유형</option><option value="general">일반 칭찬</option><option value="mentor">멘토·멘티</option></select>
           <input type="text" id="filter-name" placeholder="이름 검색..." oninput="renderTeacherList()">
         </div>
         <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
@@ -591,8 +414,6 @@ service cloud.firestore {
         <div id="teacher-list"></div>
       </div>
     </div>
-
-    <!-- 회원 목록 탭 -->
     <div id="teacher-members" style="display:none">
       <div class="card">
         <div class="card-title"><span class="icon">👥</span> 가입한 학생 목록</div>
@@ -601,38 +422,13 @@ service cloud.firestore {
     </div>
   </div>
 
-</div><!-- /app -->
+</div>
 
-<!-- ══════════════════════════════════════════════
-     Firebase SDK
-══════════════════════════════════════════════ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import {
-  getFirestore,
-  collection,
-  doc,
-  setDoc,
-  getDoc,
-  getDocs,
-  addDoc,
-  query,
-  where,
-  orderBy,
-  onSnapshot,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, updateDoc, query, where, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* ════════════════════════════════════════
-   ✅ 여기에 Firebase 설정 붙여넣기
-   ════════════════════════════════════════ */
 const firebaseConfig = {
   apiKey: "AIzaSyDhiYDnQ7HMZ09S2JqOCT-5jsF2NONY5eU",
   authDomain: "compliment-7c157.firebaseapp.com",
@@ -642,39 +438,129 @@ const firebaseConfig = {
   appId: "1:447889431048:web:8706661a54ef2d05160fbd"
 };
 
-/* ════════════════════════════════════════
-   ✅ 담임 UID (Firebase Auth에서 확인)
-   ✅ 담임 이메일 (Auth에 직접 생성한 계정)
-   ════════════════════════════════════════ */
 const TEACHER_UID   = "QjToe86zTVZDZMcn85CtVKCXQQB2";
-const TEACHER_EMAIL = "teacher@praise.app"; // Auth에서 직접 만든 계정 이메일
+const TEACHER_EMAIL = "teacher@praise.app";
+const CLASS_LABEL   = "1학년 5반";
+const MAX_ROWS      = 25;
+const DEFAULT_ROWS  = 5;
 
-/* ════════════════════════════════════════
-   ✅ 학급 이름 (상단 표시용)
-   ════════════════════════════════════════ */
-const CLASS_LABEL = "1학년 5반";
-
-// ── 초기화 ──
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getFirestore(app);
 
 document.getElementById('class-label').textContent = CLASS_LABEL;
 
-// ── 상태 ──
-let currentUser = null;
-let allPraisesCache = [];
-let unsubPraises = null;
+let currentUser      = null;
+let allPraisesCache  = [];
+let unsubPraises     = null;
+
+// ── 행 카운트 추적 ──
+const rowCounters = { general: 0, mentor: 0 };
+
+// ══════════════════════════════════════════
+// 예시 토글
+// ══════════════════════════════════════════
+window.toggleExample = function(panelId, btn) {
+  const panel = document.getElementById(panelId);
+  const isOpen = panel.classList.toggle('show');
+  btn.textContent = isOpen ? '📖 예시 닫기' : '📖 예시 보기';
+};
+
+// ══════════════════════════════════════════
+// 칭찬 입력 행 관리
+// ══════════════════════════════════════════
+const PLACEHOLDER_GENERAL = [
+  '예) 항상 밝은 에너지로 반 분위기를 살려줍니다.',
+  '예) 청소 시간에 솔선수범하여 친구들의 모범이 됩니다.',
+  '예) 모르는 내용을 친절하게 설명해주는 친구입니다.',
+  '예) 체육 시간에 뒤처지는 친구를 응원해줍니다.',
+  '예) 항상 먼저 인사하고 긍정적인 태도를 보여줍니다.',
+];
+const PLACEHOLDER_MENTOR = [
+  '예) (멘토) 수학 문제를 단계별로 이해하기 쉽게 설명해줍니다.',
+  '예) (멘티) 질문할 때 항상 예의 바르고 적극적인 자세입니다.',
+  '예) (멘토) 모르는 부분을 여러 방법으로 알려주었습니다.',
+  '예) (멘티) 배운 내용을 자신의 것으로 만들려고 노력합니다.',
+  '예) (멘토) 점심시간에도 시간을 내어 개념을 설명해줍니다.',
+];
+
+function buildRow(type, index) {
+  const placeholders = type === 'general' ? PLACEHOLDER_GENERAL : PLACEHOLDER_MENTOR;
+  const ph = placeholders[index] || '예) 구체적인 칭찬 내용을 입력하세요.';
+  const rowId = `${type}-row-${index}`;
+
+  const div = document.createElement('div');
+  div.className = 'praise-row';
+  div.id = rowId;
+  div.innerHTML = `
+    <div class="praise-row-num">${index + 1}</div>
+    <div class="praise-row-fields">
+      <input type="text" placeholder="칭찬할 친구 이름" class="row-name" data-type="${type}" data-index="${index}">
+      <textarea placeholder="${ph}" class="row-content" data-type="${type}" data-index="${index}"></textarea>
+    </div>
+    <button class="remove-row-btn" onclick="removeRow('${type}', ${index})" title="이 칸 삭제">×</button>
+  `;
+  return div;
+}
+
+function initRows(type) {
+  const container = document.getElementById(`${type}-rows`);
+  container.innerHTML = '';
+  rowCounters[type] = 0;
+  for (let i = 0; i < DEFAULT_ROWS; i++) {
+    container.appendChild(buildRow(type, i));
+    rowCounters[type]++;
+  }
+  updateAddBtn(type);
+}
+
+window.addRow = function(type) {
+  if (rowCounters[type] >= MAX_ROWS) return;
+  const container = document.getElementById(`${type}-rows`);
+  const index = rowCounters[type];
+  container.appendChild(buildRow(type, index));
+  rowCounters[type]++;
+  updateAddBtn(type);
+};
+
+window.removeRow = function(type, index) {
+  const row = document.getElementById(`${type}-row-${index}`);
+  if (row) row.remove();
+  // 최소 1칸 보장
+  const remaining = document.querySelectorAll(`#${type}-rows .praise-row`).length;
+  if (remaining === 0) {
+    addRow(type);
+  }
+  updateAddBtn(type);
+};
+
+function updateAddBtn(type) {
+  const remaining = document.querySelectorAll(`#${type}-rows .praise-row`).length;
+  const btn = document.getElementById(`${type}-add-btn`);
+  const label = document.getElementById(`${type}-count-label`);
+  label.textContent = `(${remaining}/${MAX_ROWS})`;
+  btn.disabled = remaining >= MAX_ROWS;
+};
+
+function getRowsData(type) {
+  const rows = document.querySelectorAll(`#${type}-rows .praise-row`);
+  const result = [];
+  for (const row of rows) {
+    const name    = row.querySelector('.row-name').value.trim();
+    const content = row.querySelector('.row-content').value.trim();
+    if (!name && !content) continue; // 둘 다 비어있으면 skip
+    result.push({ name, content, rowEl: row });
+  }
+  return result;
+}
 
 // ══════════════════════════════════════════
 // 유틸
 // ══════════════════════════════════════════
 function nameToEmail(name) {
-  // 이름을 이메일로 변환 (Firebase Auth는 이메일 필요)
   const encoded = encodeURIComponent(name).replace(/%/g, '').toLowerCase();
   return encoded + "@praise.app";
 }
-
 function showAlert(id, msg, type = 'error') {
   const el = document.getElementById(id);
   el.className = 'alert show alert-' + type;
@@ -685,7 +571,6 @@ function hideAlert(id) {
   el.className = 'alert';
   el.textContent = '';
 }
-
 function setLoading(btnId, loading) {
   const btn = document.getElementById(btnId);
   if (!btn) return;
@@ -693,7 +578,6 @@ function setLoading(btnId, loading) {
   if (loading) btn.dataset.origText = btn.textContent;
   btn.textContent = loading ? '처리 중...' : btn.dataset.origText;
 }
-
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
@@ -716,62 +600,36 @@ window.doSignup = async function() {
   const sid  = document.getElementById('signup-sid').value.trim();
   const pw   = document.getElementById('signup-pw').value;
   const pw2  = document.getElementById('signup-pw2').value;
-
   hideAlert('auth-alert');
   if (!name || !sid || !pw || !pw2) { showAlert('auth-alert', '모든 항목을 입력해주세요.'); return; }
   if (pw.length < 4)  { showAlert('auth-alert', '비밀번호는 4자리 이상이어야 합니다.'); return; }
   if (pw !== pw2)     { showAlert('auth-alert', '비밀번호가 일치하지 않습니다.'); return; }
   if (!/^\d+$/.test(sid)) { showAlert('auth-alert', '학번은 숫자만 입력해주세요.'); return; }
-
   setLoading('signup-btn', true);
   try {
     const email = nameToEmail(name);
     const cred  = await createUserWithEmailAndPassword(auth, email, pw);
-    // Firestore에 프로필 저장
-    await setDoc(doc(db, 'users', cred.user.uid), {
-      uid: cred.user.uid,
-      name,
-      sid,
-      email,
-      joinedAt: serverTimestamp()
-    });
+    await setDoc(doc(db, 'users', cred.user.uid), { uid: cred.user.uid, name, sid, email, joinedAt: serverTimestamp() });
     showAlert('auth-alert', '가입 완료! 로그인 탭에서 로그인하세요.', 'success');
     ['signup-name','signup-sid','signup-pw','signup-pw2'].forEach(id => document.getElementById(id).value = '');
     switchAuthTab('login');
   } catch(e) {
-    const msg = e.code === 'auth/email-already-in-use'
-      ? '이미 가입된 이름입니다.'
-      : '가입 중 오류가 발생했습니다: ' + e.message;
-    showAlert('auth-alert', msg);
-  } finally {
-    setLoading('signup-btn', false);
-  }
+    showAlert('auth-alert', e.code === 'auth/email-already-in-use' ? '이미 가입된 이름입니다.' : '가입 중 오류: ' + e.message);
+  } finally { setLoading('signup-btn', false); }
 };
 
 window.doLogin = async function() {
   const name = document.getElementById('login-name').value.trim();
   const pw   = document.getElementById('login-pw').value;
-
   hideAlert('auth-alert');
   if (!name || !pw) { showAlert('auth-alert', '이름과 비밀번호를 입력해주세요.'); return; }
-
   setLoading('login-btn', true);
   try {
-    const email = nameToEmail(name);
-    await signInWithEmailAndPassword(auth, email, pw);
-    // onAuthStateChanged가 페이지 전환 처리
+    await signInWithEmailAndPassword(auth, nameToEmail(name), pw);
   } catch(e) {
-    // 담임은 별도 이메일로 시도
-    try {
-      await signInWithEmailAndPassword(auth, TEACHER_EMAIL, pw);
-    } catch(e2) {
-      showAlert('auth-alert', '이름 또는 비밀번호가 올바르지 않습니다.');
-      setLoading('login-btn', false);
-    }
-  } finally {
-    // 성공 시 onAuthStateChanged가 처리
-    setTimeout(() => setLoading('login-btn', false), 1500);
-  }
+    try { await signInWithEmailAndPassword(auth, TEACHER_EMAIL, pw); }
+    catch(e2) { showAlert('auth-alert', '이름 또는 비밀번호가 올바르지 않습니다.'); setLoading('login-btn', false); }
+  } finally { setTimeout(() => setLoading('login-btn', false), 1500); }
 };
 
 window.doLogout = async function() {
@@ -782,10 +640,8 @@ window.doLogout = async function() {
   switchAuthTab('login');
 };
 
-// ── 로그인 상태 감지 ──
 onAuthStateChanged(auth, async user => {
   if (!user) { showPage('auth'); return; }
-
   if (user.uid === TEACHER_UID) {
     currentUser = { uid: user.uid, role: 'teacher', name: '선생님' };
     showPage('teacher');
@@ -797,43 +653,78 @@ onAuthStateChanged(auth, async user => {
     currentUser = { uid: user.uid, role: 'student', name: data.name, sid: data.sid };
     document.getElementById('student-welcome-name').textContent = data.name + ' 학생 👋';
     showPage('student');
+    initRows('general');
+    initRows('mentor');
     loadMyPraises();
   }
 });
 
 // ══════════════════════════════════════════
-// 학생 — 칭찬 제출
+// 전체 제출
 // ══════════════════════════════════════════
-window.submitPraise = async function() {
-  const type    = document.getElementById('praise-type').value;
-  const target  = document.getElementById('target-name').value.trim();
-  const content = document.getElementById('praise-content').value.trim();
-
+window.submitAllPraises = async function() {
   hideAlert('write-alert');
-  if (!target || !content) {
-    showAlert('write-alert', '친구 이름과 칭찬 내용을 모두 입력해주세요.');
+
+  const generalData = getRowsData('general');
+  const mentorData  = getRowsData('mentor');
+
+  // 세트 유효성 검사 (이름 or 내용 하나만 있으면 경고)
+  let invalidFound = false;
+  const allRows = [
+    ...document.querySelectorAll('#general-rows .praise-row'),
+    ...document.querySelectorAll('#mentor-rows .praise-row')
+  ];
+  for (const row of allRows) {
+    const name    = row.querySelector('.row-name').value.trim();
+    const content = row.querySelector('.row-content').value.trim();
+    if ((name && !content) || (!name && content)) {
+      row.querySelector('.row-name').style.borderColor   = (!name) ? '#EF4444' : '';
+      row.querySelector('.row-content').style.borderColor = (!content) ? '#EF4444' : '';
+      invalidFound = true;
+    } else {
+      row.querySelector('.row-name').style.borderColor    = '';
+      row.querySelector('.row-content').style.borderColor = '';
+    }
+  }
+  if (invalidFound) {
+    showAlert('write-alert', '이름과 칭찬 내용은 반드시 세트로 입력해야 합니다. 빨간 테두리 칸을 확인해주세요.');
     return;
   }
-  if (content.length < 20) {
-    showAlert('write-alert', '칭찬 내용을 좀 더 구체적으로 20자 이상 작성해주세요.');
+
+  // 내용 길이 체크
+  const shortEntry = [...generalData, ...mentorData].find(d => d.content.length < 20);
+  if (shortEntry) {
+    showAlert('write-alert', `"${shortEntry.name}"에 대한 칭찬이 너무 짧습니다. 20자 이상 구체적으로 작성해주세요.`);
+    return;
+  }
+
+  if (generalData.length === 0 && mentorData.length === 0) {
+    showAlert('write-alert', '작성된 칭찬이 없습니다. 최소 1개 이상 작성해주세요.');
     return;
   }
 
   setLoading('submit-btn', true);
   try {
-    await addDoc(collection(db, 'praises'), {
-      authorUid:   currentUser.uid,
-      authorName:  currentUser.name,
-      authorSid:   currentUser.sid,
-      type,
-      targetName:  target,
-      content,
-      createdAt:   serverTimestamp()
-    });
-    document.getElementById('target-name').value   = '';
-    document.getElementById('praise-content').value = '';
-    showAlert('write-alert', '칭찬이 제출되었습니다! 🎉', 'success');
-    setTimeout(() => hideAlert('write-alert'), 3000);
+    const batch = [];
+    for (const d of generalData) {
+      batch.push(addDoc(collection(db, 'praises'), {
+        authorUid: currentUser.uid, authorName: currentUser.name, authorSid: currentUser.sid,
+        type: 'general', targetName: d.name, content: d.content, createdAt: serverTimestamp()
+      }));
+    }
+    for (const d of mentorData) {
+      batch.push(addDoc(collection(db, 'praises'), {
+        authorUid: currentUser.uid, authorName: currentUser.name, authorSid: currentUser.sid,
+        type: 'mentor', targetName: d.name, content: d.content, createdAt: serverTimestamp()
+      }));
+    }
+    await Promise.all(batch);
+
+    // 제출 후 초기화
+    initRows('general');
+    initRows('mentor');
+    showAlert('write-alert', `🎉 총 ${generalData.length + mentorData.length}건의 칭찬이 제출되었습니다!`, 'success');
+    setTimeout(() => hideAlert('write-alert'), 4000);
   } catch(e) {
     showAlert('write-alert', '제출 실패: ' + e.message);
   } finally {
@@ -841,14 +732,12 @@ window.submitPraise = async function() {
   }
 };
 
-// ── 내 칭찬 실시간 조회 ──
+// ══════════════════════════════════════════
+// 내 칭찬 조회
+// ══════════════════════════════════════════
 function loadMyPraises() {
   if (unsubPraises) unsubPraises();
-  const q = query(
-    collection(db, 'praises'),
-    where('authorUid', '==', currentUser.uid),
-    orderBy('createdAt', 'desc')
-  );
+  const q = query(collection(db, 'praises'), where('authorUid', '==', currentUser?.uid), orderBy('createdAt', 'desc'));
   unsubPraises = onSnapshot(q, snap => {
     allPraisesCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderMyPraises();
@@ -861,11 +750,67 @@ function renderMyPraises() {
     list.innerHTML = `<div class="empty-state"><span class="empty-icon">🌱</span>아직 작성한 칭찬이 없어요.<br>친구를 칭찬하러 가볼까요?</div>`;
     return;
   }
-  list.innerHTML = allPraisesCache.map(p => praiseItemHTML(p)).join('');
+  list.innerHTML = allPraisesCache.map(p => praiseItemHTML(p, false, true)).join('');
 }
 
 // ══════════════════════════════════════════
-// 담임 — 전체 데이터 로드
+// 칭찬 수정
+// ══════════════════════════════════════════
+window.openEditModal = async function(praiseId) {
+  const praise = allPraisesCache.find(p => p.id === praiseId);
+  if (!praise) return;
+
+  // 기존 모달 제거
+  const existing = document.getElementById('edit-modal');
+  if (existing) existing.remove();
+
+  const isM = praise.type === 'mentor';
+  const overlay = document.createElement('div');
+  overlay.id = 'edit-modal';
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-header">
+        <div style="font-size:17px;font-weight:700;">✏️ 칭찬 수정</div>
+        <button class="modal-close" onclick="document.getElementById('edit-modal').remove()">✕</button>
+      </div>
+      <div style="margin-bottom:12px;">
+        <span class="badge ${isM ? 'badge-mentor' : 'badge-general'}">${isM ? '🤝 멘토·멘티' : '💬 일반 칭찬'}</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">칭찬할 친구 이름</label>
+        <input type="text" id="edit-target" value="${praise.targetName || ''}" placeholder="친구 이름">
+      </div>
+      <div class="form-group">
+        <label class="field-label">칭찬 내용 <span class="field-hint">20자 이상</span></label>
+        <textarea id="edit-content" style="height:130px;">${praise.content || ''}</textarea>
+      </div>
+      <div id="edit-alert" class="alert"></div>
+      <button class="btn btn-primary" id="edit-save-btn" onclick="saveEdit('${praiseId}')">💾 수정 저장</button>
+      <button class="btn btn-outline" style="margin-top:8px;width:100%;" onclick="document.getElementById('edit-modal').remove()">취소</button>
+    </div>
+  `;
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+};
+
+window.saveEdit = async function(praiseId) {
+  const target  = document.getElementById('edit-target').value.trim();
+  const content = document.getElementById('edit-content').value.trim();
+  if (!target || !content) { showAlert('edit-alert', '이름과 칭찬 내용을 모두 입력해주세요.'); return; }
+  if (content.length < 20) { showAlert('edit-alert', '칭찬 내용을 20자 이상 작성해주세요.'); return; }
+  setLoading('edit-save-btn', true);
+  try {
+    await updateDoc(doc(db, 'praises', praiseId), { targetName: target, content, updatedAt: serverTimestamp() });
+    document.getElementById('edit-modal').remove();
+  } catch(e) {
+    showAlert('edit-alert', '수정 실패: ' + e.message);
+    setLoading('edit-save-btn', false);
+  }
+};
+
+// ══════════════════════════════════════════
+// 담임 데이터
 // ══════════════════════════════════════════
 function loadTeacherData() {
   if (unsubPraises) unsubPraises();
@@ -879,12 +824,11 @@ function loadTeacherData() {
 }
 
 function updateStats() {
-  const praises = allPraisesCache;
-  const authors = new Set(praises.map(p => p.authorUid));
-  document.getElementById('stat-total').textContent   = praises.length;
+  const authors = new Set(allPraisesCache.map(p => p.authorUid));
+  document.getElementById('stat-total').textContent    = allPraisesCache.length;
   document.getElementById('stat-students').textContent = authors.size;
-  document.getElementById('stat-mentor').textContent   = praises.filter(p => p.type === 'mentor').length;
-  document.getElementById('stat-general').textContent  = praises.filter(p => p.type === 'general').length;
+  document.getElementById('stat-mentor').textContent   = allPraisesCache.filter(p => p.type === 'mentor').length;
+  document.getElementById('stat-general').textContent  = allPraisesCache.filter(p => p.type === 'general').length;
 }
 
 window.renderTeacherList = function() {
@@ -905,54 +849,90 @@ window.renderTeacherList = function() {
     list.innerHTML = `<div class="empty-state"><span class="empty-icon">🔍</span>조건에 맞는 칭찬이 없습니다.</div>`;
     return;
   }
-  list.innerHTML = filtered.map(p => praiseItemHTML(p, true)).join('');
+  list.innerHTML = filtered.map(p => praiseItemHTML(p, true, false)).join('');
 };
 
-// ── 회원 목록 ──
 async function loadMemberList() {
   const list = document.getElementById('member-list');
   list.innerHTML = `<div class="loading"><div class="spinner"></div>불러오는 중...</div>`;
   try {
-    const snap = await getDocs(collection(db, 'users'));
+    const snap  = await getDocs(collection(db, 'users'));
     const users = snap.docs.map(d => d.data());
-
-    // 칭찬 횟수 카운트
-    const praisedBy = {};   // 칭찬한 횟수
-    const praisedTo = {};   // 칭찬받은 횟수
+    const praisedBy = {}, praisedTo = {};
     allPraisesCache.forEach(p => {
       praisedBy[p.authorName] = (praisedBy[p.authorName] || 0) + 1;
       praisedTo[p.targetName] = (praisedTo[p.targetName] || 0) + 1;
     });
-
     if (users.length === 0) {
       list.innerHTML = `<div class="empty-state"><span class="empty-icon">👤</span>아직 가입한 학생이 없습니다.</div>`;
       return;
     }
-
-    // 학번 순 정렬
     users.sort((a, b) => (a.sid || '').localeCompare(b.sid || ''));
-
-list.innerHTML = users.map(u => `
-      <div class="user-item" onclick="showStudentModal('${u.uid}', '${u.name}', '${u.sid}')"
-           style="cursor:pointer; transition: background .15s;"
-           onmouseover="this.style.background='#EEF2FF'" onmouseout="this.style.background='#FAFAFA'">
+    list.innerHTML = users.map(u => `
+      <div class="user-item" onclick="showStudentModal('${u.uid}','${u.name}','${u.sid}')"
+           style="cursor:pointer;" onmouseover="this.style.background='#EEF2FF'" onmouseout="this.style.background='#FAFAFA'">
         <div class="user-info">
-          <div class="user-avatar">${(u.name || '?')[0]}</div>
+          <div class="user-avatar">${(u.name||'?')[0]}</div>
           <div>
             <div class="user-name" style="color:var(--primary);">🔍 ${u.name}</div>
             <div class="user-sid">학번 ${u.sid}</div>
           </div>
         </div>
-        <div class="user-count">
-          칭찬함 <strong>${praisedBy[u.name] || 0}</strong>건 ·
-          받음 <strong>${praisedTo[u.name] || 0}</strong>건
-        </div>
+        <div class="user-count">칭찬함 <strong>${praisedBy[u.name]||0}</strong>건 · 받음 <strong>${praisedTo[u.name]||0}</strong>건</div>
       </div>
     `).join('');
   } catch(e) {
     list.innerHTML = `<div class="empty-state">불러오기 실패: ${e.message}</div>`;
   }
 }
+
+// ══════════════════════════════════════════
+// 학생별 칭찬 조회 모달 (담임용)
+// ══════════════════════════════════════════
+window.showStudentModal = async function(uid, name, sid) {
+  const existing = document.getElementById('student-modal');
+  if (existing) existing.remove();
+  const modal = document.createElement('div');
+  modal.id = 'student-modal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `<div class="modal-box"><div class="loading"><div class="spinner"></div>불러오는 중...</div></div>`;
+  modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+  document.body.appendChild(modal);
+  try {
+    const q = query(collection(db, 'praises'), where('authorUid','==',uid), orderBy('createdAt','desc'));
+    const snap = await getDocs(q);
+    const praises = snap.docs.map(d => d.data());
+    const mentorCount  = praises.filter(p => p.type === 'mentor').length;
+    const generalCount = praises.filter(p => p.type === 'general').length;
+    const listHTML = praises.length === 0
+      ? `<div class="empty-state"><span class="empty-icon">🌱</span>작성한 칭찬이 없습니다.</div>`
+      : praises.map(p => {
+          const isM = p.type === 'mentor';
+          const date = p.createdAt?.toDate ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '날짜 없음';
+          return `<div style="border:1.5px solid ${isM?'#FFB74D':'#60AADE'};background:${isM?'#FFF3E0':'#E8F4FD'};border-radius:10px;padding:14px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+              <span class="badge ${isM?'badge-mentor':'badge-general'}">${isM?'🤝 멘토·멘티':'💬 일반 칭찬'}</span>
+              <span style="font-size:12px;color:#6B7280;">${date}</span>
+            </div>
+            <div style="font-size:14px;margin-bottom:6px;"><strong style="color:var(--primary);">${p.targetName}</strong>에게</div>
+            <div style="font-size:14px;line-height:1.7;">${p.content}</div>
+          </div>`;
+        }).join('');
+    modal.querySelector('.modal-box').innerHTML = `
+      <div class="modal-header">
+        <div>
+          <div style="font-size:18px;font-weight:700;">📋 ${sid} ${name}의 칭찬 기록</div>
+          <div style="font-size:13px;color:#6B7280;margin-top:4px;">전체 <strong>${praises.length}</strong>건 &nbsp;|&nbsp; 멘토·멘티 <strong>${mentorCount}</strong>건 &nbsp;|&nbsp; 일반 <strong>${generalCount}</strong>건</div>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('student-modal').remove()">✕</button>
+      </div>
+      <div style="height:1px;background:var(--border);margin-bottom:16px;"></div>
+      ${listHTML}
+    `;
+  } catch(e) {
+    modal.querySelector('.modal-box').innerHTML = `<div style="text-align:center;color:var(--error);padding:20px;">불러오기 실패: ${e.message}<br><br><button class="btn btn-outline" onclick="document.getElementById('student-modal').remove()">닫기</button></div>`;
+  }
+};
 
 // ══════════════════════════════════════════
 // 탭 전환
@@ -978,165 +958,42 @@ window.switchTeacherTab = function(tab) {
 // ══════════════════════════════════════════
 // 공통 칭찬 아이템 HTML
 // ══════════════════════════════════════════
-function praiseItemHTML(p, showAuthor = false) {
+function praiseItemHTML(p, showAuthor = false, showEdit = false) {
   const isM = p.type === 'mentor';
-  const badgeClass = isM ? 'badge-mentor' : 'badge-general';
-  const badgeLabel = isM ? '🤝 멘토·멘티' : '💬 일반 칭찬';
-  const date = p.createdAt?.toDate
-    ? p.createdAt.toDate().toLocaleDateString('ko-KR')
-    : '날짜 없음';
+  const date = p.createdAt?.toDate ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '날짜 없음';
+  const updatedBadge = p.updatedAt ? `<span style="font-size:11px;color:#9CA3AF;">(수정됨)</span>` : '';
   const from = showAuthor
-    ? `<span>${p.authorSid || ''} <strong>${p.authorName || ''}</strong></span>
-       <span class="praise-arrow">→</span>`
-    : '';
+    ? `<span>${p.authorSid||''} <strong>${p.authorName||''}</strong></span><span class="praise-arrow">→</span>` : '';
+  const editBtn = showEdit
+    ? `<button onclick="openEditModal('${p.id}')" class="btn btn-outline btn-sm" style="margin-top:8px;">✏️ 수정하기</button>` : '';
   return `
     <div class="praise-item ${p.type}">
-      <span class="badge ${badgeClass}">${badgeLabel}</span>
-      <div class="praise-meta">
-        ${from}
-        <strong>${p.targetName}</strong>에게 · ${date}
-      </div>
+      <span class="badge ${isM?'badge-mentor':'badge-general'}">${isM?'🤝 멘토·멘티':'💬 일반 칭찬'}</span>
+      <div class="praise-meta">${from}<strong>${p.targetName}</strong>에게 · ${date} ${updatedBadge}</div>
       <div class="praise-content">${p.content}</div>
-    </div>
-  `;
+      ${editBtn}
+    </div>`;
 }
 
 // ══════════════════════════════════════════
 // 엑셀 내보내기
 // ══════════════════════════════════════════
-// ══════════════════════════════════════════
-// 학생별 칭찬 조회 모달 (담임용)
-// ══════════════════════════════════════════
-window.showStudentModal = async function(uid, name, sid) {
-  // 기존 모달 제거
-  const existing = document.getElementById('student-modal');
-  if (existing) existing.remove();
-
-  // 로딩 모달 먼저 표시
-  const modal = document.createElement('div');
-  modal.id = 'student-modal';
-  modal.style.cssText = `
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.55); z-index:9999;
-    display:flex; align-items:center; justify-content:center;
-    padding:20px; box-sizing:border-box;
-  `;
-  modal.innerHTML = `
-    <div style="background:#fff; border-radius:16px; padding:28px;
-                max-width:560px; width:100%; max-height:82vh;
-                overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-      <div class="loading"><div class="spinner"></div>불러오는 중...</div>
-    </div>
-  `;
-  modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
-  document.body.appendChild(modal);
-
-  // Firestore에서 해당 학생 칭찬 불러오기
-  try {
-    const q = query(
-      collection(db, 'praises'),
-      where('authorUid', '==', uid),
-      orderBy('createdAt', 'desc')
-    );
-    const snap = await getDocs(q);
-    const praises = snap.docs.map(d => d.data());
-
-    const mentorCount  = praises.filter(p => p.type === 'mentor').length;
-    const generalCount = praises.filter(p => p.type === 'general').length;
-
-    const listHTML = praises.length === 0
-      ? `<div class="empty-state"><span class="empty-icon">🌱</span>작성한 칭찬이 없습니다.</div>`
-      : praises.map(p => {
-          const isM = p.type === 'mentor';
-          const date = p.createdAt?.toDate
-            ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '날짜 없음';
-          return `
-            <div style="border:1.5px solid ${isM ? '#FFB74D' : '#60AADE'};
-                        background:${isM ? '#FFF3E0' : '#E8F4FD'};
-                        border-radius:10px; padding:14px; margin-bottom:10px;">
-              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
-                <span style="background:${isM ? '#FFF3E0' : '#E8F4FD'};
-                             color:${isM ? '#7B4D00' : '#0C4A6E'};
-                             border:1px solid ${isM ? '#FFB74D' : '#60AADE'};
-                             border-radius:20px; padding:2px 10px; font-size:12px; font-weight:700;">
-                  ${isM ? '🤝 멘토·멘티' : '💬 일반 칭찬'}
-                </span>
-                <span style="font-size:12px; color:#6B7280;">${date}</span>
-              </div>
-              <div style="font-size:14px; margin-bottom:6px;">
-                <strong style="color:#3B5BDB;">${p.targetName}</strong>에게
-              </div>
-              <div style="font-size:14px; line-height:1.7; color:#1A1A2E;">${p.content}</div>
-            </div>
-          `;
-        }).join('');
-
-    modal.querySelector('div').innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; gap:10px;">
-        <div>
-          <h2 style="font-size:18px; font-weight:700; color:#1A1A2E; margin:0;">
-            📋 ${sid} ${name}의 칭찬 기록
-          </h2>
-          <div style="font-size:13px; color:#6B7280; margin-top:6px;">
-            전체 <strong>${praises.length}</strong>건
-            &nbsp;|&nbsp; 멘토·멘티 <strong>${mentorCount}</strong>건
-            &nbsp;|&nbsp; 일반 <strong>${generalCount}</strong>건
-          </div>
-        </div>
-        <button onclick="document.getElementById('student-modal').remove()"
-                style="background:none; border:none; font-size:24px; cursor:pointer;
-                       color:#6B7280; flex-shrink:0; line-height:1;">✕</button>
-      </div>
-      <div style="height:1px; background:#E5E7EB; margin-bottom:16px;"></div>
-      ${listHTML}
-    `;
-  } catch(e) {
-    modal.querySelector('div').innerHTML = `
-      <div style="text-align:center; color:#B91C1C; padding:20px;">
-        불러오기 실패: ${e.message}
-        <br><br>
-        <button onclick="document.getElementById('student-modal').remove()"
-                class="btn btn-outline">닫기</button>
-      </div>
-    `;
-  }
-};
- window.exportExcel = function() {
+window.exportExcel = function() {
   if (allPraisesCache.length === 0) { alert('내보낼 데이터가 없습니다.'); return; }
-
-  // 칭찬 횟수 집계
-  const praisedBy  = {};
-  const praisedTo  = {};
-  const sidMap     = {};
+  const praisedBy = {}, praisedTo = {}, sidMap = {};
   allPraisesCache.forEach(p => {
-    praisedBy[p.authorName] = (praisedBy[p.authorName] || 0) + 1;
-    praisedTo[p.targetName] = (praisedTo[p.targetName] || 0) + 1;
+    praisedBy[p.authorName] = (praisedBy[p.authorName]||0) + 1;
+    praisedTo[p.targetName] = (praisedTo[p.targetName]||0) + 1;
     if (p.authorSid) sidMap[p.authorName] = p.authorSid;
   });
-
-  // 시트1: 전체 칭찬 목록
   const rows1 = [['학번','이름','유형','칭찬받은 친구','칭찬 내용','작성일']];
   allPraisesCache.forEach(p => {
-    const date = p.createdAt?.toDate
-      ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '';
-    rows1.push([
-      p.authorSid || '',
-      p.authorName || '',
-      p.type === 'mentor' ? '멘토·멘티' : '일반 칭찬',
-      p.targetName || '',
-      p.content || '',
-      date
-    ]);
+    const date = p.createdAt?.toDate ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '';
+    rows1.push([p.authorSid||'', p.authorName||'', p.type==='mentor'?'멘토·멘티':'일반 칭찬', p.targetName||'', p.content||'', date]);
   });
-
-  // 시트2: 학생별 통계
   const names = new Set([...Object.keys(praisedBy), ...Object.keys(praisedTo)]);
   const rows2 = [['학번','이름','칭찬한 횟수','칭찬받은 횟수']];
-  [...names].sort().forEach(n => {
-    rows2.push([sidMap[n] || '', n, praisedBy[n] || 0, praisedTo[n] || 0]);
-  });
-
-  // XLSX 생성 (CDN)
+  [...names].sort().forEach(n => rows2.push([sidMap[n]||'', n, praisedBy[n]||0, praisedTo[n]||0]));
   const script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
   script.onload = () => {
@@ -1148,7 +1005,6 @@ window.showStudentModal = async function(uid, name, sid) {
   };
   document.head.appendChild(script);
 };
-
 </script>
 </body>
 </html>
