@@ -406,7 +406,7 @@ service cloud.firestore {
       <div class="card">
         <div class="filter-row">
           <select id="filter-type" onchange="renderTeacherList()"><option value="all">전체 유형</option><option value="general">일반 칭찬</option><option value="mentor">멘토·멘티</option></select>
-          <input type="text" id="filter-name" placeholder="이름 검색..." oninput="renderTeacherList()">
+<input type="text" id="filter-name" placeholder="칭찬받은 학생 이름 검색..." oninput="renderTeacherList()">
         </div>
         <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
           <button class="btn btn-green btn-sm" onclick="exportExcel()">📊 엑셀 내보내기</button>
@@ -839,12 +839,10 @@ window.renderTeacherList = function() {
   const nameFilter = document.getElementById('filter-name').value.trim();
   let filtered = allPraisesCache;
   if (typeFilter !== 'all') filtered = filtered.filter(p => p.type === typeFilter);
-  if (nameFilter) {
+if (nameFilter) {
     const kw = nameFilter.toLowerCase();
     filtered = filtered.filter(p =>
-      (p.authorName || '').toLowerCase().includes(kw) ||
-      (p.targetName || '').toLowerCase().includes(kw) ||
-      (p.authorSid  || '').includes(kw)
+      (p.targetName || '').toLowerCase().includes(kw)
     );
   }
   const list = document.getElementById('teacher-list');
