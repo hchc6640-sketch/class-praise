@@ -256,6 +256,39 @@
 </head>
 <body>
 
+<!-- 설정 안내 오버레이 -->
+<div id="setup-overlay">
+  <div id="setup-box">
+    <h2>🔧 Firebase 설정 필요</h2>
+    <p>아래 순서대로 설정하면 앱이 바로 동작합니다.<br>완료 후 이 파일의 <strong>firebaseConfig</strong> 부분을 교체하고, 아래 오버레이 div를 삭제하세요.</p>
+    <div class="setup-step"><div class="setup-num">1</div><div style="font-size:14px;color:var(--text)"><strong>firebase.google.com</strong> → 프로젝트 생성 → 웹 앱 추가 → firebaseConfig 복사</div></div>
+    <div class="setup-step"><div class="setup-num">2</div><div style="font-size:14px;color:var(--text)"><strong>Authentication</strong> 활성화 → 이메일/비밀번호 방식 선택</div></div>
+    <div class="setup-step"><div class="setup-num">3</div><div style="font-size:14px;color:var(--text)"><strong>Firestore Database</strong> 활성화 → 아래 보안 규칙 붙여넣기</div></div>
+    <div class="setup-step"><div class="setup-num">4</div><div style="font-size:14px;color:var(--text)">담임 계정: Firebase Auth에서 직접 <strong>teacher@praise.app</strong> 수동 생성 → UID 복사</div></div>
+    <div class="divider"></div>
+    <p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">📋 Firestore 보안 규칙</p>
+    <div class="code-block">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read: if request.auth.uid == "여기에_담임_UID";
+      allow read: if request.auth.uid == uid;
+      allow create: if request.auth.uid == uid;
+      allow update: if request.auth.uid == uid;
+    }
+    match /praises/{praiseId} {
+      allow read: if request.auth.uid == "여기에_담임_UID";
+      allow read: if resource.data.authorUid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.authorUid == request.auth.uid;
+      allow update: if request.auth.uid == resource.data.authorUid;
+      allow delete: if false;
+    }
+  }
+}</div>
+    <button class="btn btn-primary" onclick="document.getElementById('setup-overlay').remove()">설정 완료 — 앱 시작하기</button>
+  </div>
+</div>
 
 <div class="app">
 
@@ -601,8 +634,9 @@ window.doLogin = async function() {
 
 window.doLogout = async function() {
   if (unsubPraises) { unsubPraises(); unsubPraises = null; }
-  await signOut(auth);
+  allPraisesCache = [];
   currentUser = null;
+  await signOut(auth);
   showPage('auth');
   switchAuthTab('login');
 };
@@ -613,7 +647,9 @@ onAuthStateChanged(auth, async user => {
     currentUser = { uid: user.uid, role: 'teacher', name: '선생님' };
     showPage('teacher');
     loadTeacherData();
-  } else {
+} else {
+    if (unsubPraises) { unsubPraises(); unsubPraises = null; }
+    allPraisesCache = [];
     const snap = await getDoc(doc(db, 'users', user.uid));
     if (!snap.exists()) { await signOut(auth); return; }
     const data = snap.data();
@@ -717,7 +753,7 @@ function renderMyPraises() {
     list.innerHTML = `<div class="empty-state"><span class="empty-icon">🌱</span>아직 작성한 칭찬이 없어요.<br>친구를 칭찬하러 가볼까요?</div>`;
     return;
   }
-  list.innerHTML = allPraisesCache.map(p => praiseItemHTML(p, false, true)).join('');
+list.innerHTML = allPraisesCache.map(p => praiseItemHTML(p, false, true, true)).join('');
 }
 
 // ══════════════════════════════════════════
@@ -816,7 +852,7 @@ window.renderTeacherList = function() {
     list.innerHTML = `<div class="empty-state"><span class="empty-icon">🔍</span>조건에 맞는 칭찬이 없습니다.</div>`;
     return;
   }
-  list.innerHTML = filtered.map(p => praiseItemHTML(p, true, false)).join('');
+list.innerHTML = filtered.map(p => praiseItemHTML(p, true, false, true)).join('');
 };
 
 async function loadMemberList() {
@@ -925,22 +961,40 @@ window.switchTeacherTab = function(tab) {
 // ══════════════════════════════════════════
 // 공통 칭찬 아이템 HTML
 // ══════════════════════════════════════════
-function praiseItemHTML(p, showAuthor = false, showEdit = false) {
+function praiseItemHTML(p, showAuthor = false, showEdit = false, showDelete = false) {
   const isM = p.type === 'mentor';
   const date = p.createdAt?.toDate ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '날짜 없음';
   const updatedBadge = p.updatedAt ? `<span style="font-size:11px;color:#9CA3AF;">(수정됨)</span>` : '';
   const from = showAuthor
     ? `<span>${p.authorSid||''} <strong>${p.authorName||''}</strong></span><span class="praise-arrow">→</span>` : '';
   const editBtn = showEdit
-    ? `<button onclick="openEditModal('${p.id}')" class="btn btn-outline btn-sm" style="margin-top:8px;">✏️ 수정하기</button>` : '';
+    ? `<button onclick="openEditModal('${p.id}')" class="btn btn-outline btn-sm" style="margin-top:8px;margin-right:6px;">✏️ 수정</button>` : '';
+  const delBtn = showDelete
+    ? `<button onclick="deletePraise('${p.id}')" class="btn btn-danger btn-sm" style="margin-top:8px;">🗑️ 삭제</button>` : '';
   return `
-    <div class="praise-item ${p.type}">
+    <div class="praise-item ${p.type}" id="praise-item-${p.id}">
       <span class="badge ${isM?'badge-mentor':'badge-general'}">${isM?'🤝 멘토·멘티':'💬 일반 칭찬'}</span>
       <div class="praise-meta">${from}<strong>${p.targetName}</strong>에게 · ${date} ${updatedBadge}</div>
       <div class="praise-content">${p.content}</div>
-      ${editBtn}
+      <div>${editBtn}${delBtn}</div>
     </div>`;
-}
+}// ── 삭제 ──
+window.deletePraise = async function(praiseId) {
+  if (!confirm('이 칭찬을 삭제할까요? 되돌릴 수 없어요.')) return;
+  try {
+    const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+    await deleteDoc(doc(db, 'praises', praiseId));
+    allPraisesCache = allPraisesCache.filter(p => p.id !== praiseId);
+    const el = document.getElementById('praise-item-' + praiseId);
+    if (el) el.remove();
+    if (currentUser?.role === 'teacher') {
+      updateStats();
+      renderTeacherList();
+    }
+  } catch(e) {
+    alert('삭제 실패: ' + e.message);
+  }
+};
 
 // ══════════════════════════════════════════
 // 엑셀 내보내기
