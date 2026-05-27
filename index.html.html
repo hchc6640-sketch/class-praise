@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>칭찬합시다 🌟</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #3B5BDB;
+    --primary-light: #EDF2FF;
+    --primary-dark: #2F4AC0;
+    --mentor-bg: #FFF3E0;
+    --mentor-text: #7B4D00;
+    --mentor-border: #FFB74D;
+    --general-bg: #E8F4FD;
+    --general-text: #0C4A6E;
+    --general-border: #60AADE;
+    --success: #2E7D52;
+    --success-bg: #E8F5EE;
+    --error: #B91C1C;
+    --error-bg: #FEF2F2;
+    --text: #1A1A2E;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --bg: #F4F6FF;
+    --white: #FFFFFF;
+    --shadow: 0 2px 12px rgba(59,91,219,0.08);
+    --shadow-md: 0 4px 24px rgba(59,91,219,0.13);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── 레이아웃 ── */
+  .app { max-width: 640px; margin: 0 auto; padding: 24px 16px 48px; }
+
+  .logo-wrap {
+    text-align: center;
+    padding: 32px 0 24px;
+  }
+  .logo-emoji { font-size: 48px; line-height: 1; display: block; margin-bottom: 10px; }
+  .logo-title { font-size: 26px; font-weight: 700; color: var(--primary); letter-spacing: -0.5px; }
+  .logo-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── 카드 ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(59,91,219,0.07);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .icon { font-size: 20px; }
+
+  /* ── 폼 요소 ── */
+  .form-group { margin-bottom: 14px; }
+  .form-group:last-of-type { margin-bottom: 0; }
+  label.field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .field-hint { font-size: 11px; color: #9CA3AF; margin-left: 4px; font-weight: 400; }
+
+  input[type="text"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59,91,219,0.12);
+  }
+  textarea { height: 110px; resize: vertical; line-height: 1.6; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  /* ── 버튼 ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 20px;
+    border-radius: var(--radius-sm);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all .18s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    width: 100%;
+    padding: 13px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(59,91,219,0.25); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { background: #A5B4FC; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+  }
+  .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+  .btn-sm { padding: 6px 12px; font-size: 13px; }
+  .btn-danger { background: var(--error-bg); color: var(--error); border: 1.5px solid #FCA5A5; }
+  .btn-danger:hover { background: #FEE2E2; }
+  .btn-green { background: #D1FAE5; color: #065F46; border: 1.5px solid #6EE7B7; }
+  .btn-green:hover { background: #A7F3D0; }
+
+  /* ── 탭 ── */
+  .tabs {
+    display: flex;
+    background: #EEF2FF;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 20px;
+    gap: 4px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 7px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .tab-btn.active {
+    background: var(--white);
+    color: var(--primary);
+    font-weight: 700;
+    box-shadow: 0 1px 4px rgba(59,91,219,0.12);
+  }
+
+  /* ── 알림 ── */
+  .alert {
+    padding: 11px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    margin-bottom: 14px;
+    display: none;
+    line-height: 1.5;
+  }
+  .alert.show { display: block; }
+  .alert-error { background: var(--error-bg); color: var(--error); border: 1px solid #FCA5A5; }
+  .alert-success { background: var(--success-bg); color: var(--success); border: 1px solid #86EFAC; }
+  .alert-info { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #A5B4FC; }
+
+  /* ── 뱃지 ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .badge-mentor { background: var(--mentor-bg); color: var(--mentor-text); border: 1px solid var(--mentor-border); }
+  .badge-general { background: var(--general-bg); color: var(--general-text); border: 1px solid var(--general-border); }
+  .badge-teacher { background: #E0F2FE; color: #0369A1; border: 1px solid #7DD3FC; }
+
+  /* ── 칭찬 아이템 ── */
+  .praise-item {
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+    border: 1.5px solid;
+    transition: transform .15s;
+  }
+  .praise-item:hover { transform: translateY(-1px); }
+  .praise-item.mentor { background: var(--mentor-bg); border-color: var(--mentor-border); }
+  .praise-item.general { background: var(--general-bg); border-color: var(--general-border); }
+  .praise-meta { font-size: 12px; color: var(--text-muted); margin: 6px 0 6px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .praise-arrow { font-weight: 700; color: var(--primary); }
+  .praise-content { font-size: 14px; line-height: 1.7; color: var(--text); }
+
+  /* ── 통계 그리드 ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-card {
+    background: var(--primary-light);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #C7D2FE;
+  }
+  .stat-num { font-size: 28px; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 12px; color: #4338CA; margin-top: 2px; font-weight: 500; }
+
+  /* ── 헤더 ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .page-header-title { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+
+  /* ── 필터 ── */
+  .filter-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .filter-row select, .filter-row input { flex: 1; min-width: 120px; font-size: 14px; padding: 9px 12px; }
+
+  /* ── 회원 목록 ── */
+  .user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: #FAFAFA;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .user-info { display: flex; align-items: center; gap: 10px; }
+  .user-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .user-name { font-weight: 700; font-size: 15px; }
+  .user-sid { font-size: 12px; color: var(--text-muted); }
+  .user-count { font-size: 13px; color: var(--text-muted); }
+
+  /* ── 로딩 ── */
+  .loading {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .spinner {
+    width: 28px; height: 28px;
+    border: 3px solid #E0E7FF;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .empty-state {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .empty-state .empty-icon { font-size: 36px; display: block; margin-bottom: 10px; }
+
+  /* ── 반응형 ── */
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 18px; }
+    .logo-title { font-size: 22px; }
+  }
+
+  /* ── 페이지 전환 ── */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ── 설정 안내 오버레이 ── */
+  #setup-overlay {
+    position: fixed; inset: 0;
+    background: rgba(26,26,46,0.7);
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  #setup-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: var(--shadow-md);
+  }
+  #setup-box h2 { font-size: 20px; margin-bottom: 12px; color: var(--primary); }
+  #setup-box p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 12px; }
+  .code-block {
+    background: #1E1E3F;
+    color: #A5B4FC;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin-bottom: 14px;
+    white-space: pre;
+  }
+  .setup-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .setup-num {
+    min-width: 24px; height: 24px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 16px 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     Firebase 미설정 시 안내 오버레이
+     설정 완료 후 아래 div 전체를 삭제하세요
+══════════════════════════════════════════════ -->
+<div id="setup-overlay">
+  <div id="setup-box">
+    <h2>🔧 Firebase 설정 필요</h2>
+    <p>아래 순서대로 설정하면 앱이 바로 동작합니다.<br>완료 후 이 파일의 <strong>firebaseConfig</strong> 부분을 교체하고, 아래 오버레이 div를 삭제하세요.</p>
+
+    <div class="setup-step">
+      <div class="setup-num">1</div>
+      <div style="font-size:14px;color:var(--text)"><strong>firebase.google.com</strong> → 프로젝트 생성 → 웹 앱 추가 → firebaseConfig 복사</div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">2</div>
+      <div style="font-size:14px;color:var(--text)"><strong>Authentication</strong> 활성화 → 이메일/비밀번호 방식 선택</div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">3</div>
+      <div style="font-size:14px;color:var(--text)"><strong>Firestore Database</strong> 활성화 → 아래 보안 규칙 붙여넣기</div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">4</div>
+      <div style="font-size:14px;color:var(--text)">담임 계정: Firebase Auth에서 직접 <strong>teacher@praise.app</strong> 수동 생성 → UID 복사</div>
+    </div>
+
+    <div class="divider"></div>
+    <p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">📋 Firestore 보안 규칙 (복사해서 붙여넣기)</p>
+    <div class="code-block">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 회원 정보: 담임만 전체 읽기 / 본인만 쓰기
+    match /users/{uid} {
+      allow read: if request.auth.uid == "여기에_담임_UID";
+      allow read: if request.auth.uid == uid;
+      allow create: if request.auth.uid == uid;
+      allow update: if request.auth.uid == uid;
+    }
+
+    // 칭찬: 담임은 전체 / 학생은 본인 작성만 읽기
+    match /praises/{praiseId} {
+      allow read: if request.auth.uid == "여기에_담임_UID";
+      allow read: if resource.data.authorUid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if false;
+    }
+  }
+}</div>
+    <button class="btn btn-primary" onclick="document.getElementById('setup-overlay').remove()">
+      설정 완료 — 앱 시작하기
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     메인 앱
+══════════════════════════════════════════════ -->
+<div class="app">
+
+  <!-- ── 로그인 / 회원가입 ── -->
+  <div id="page-auth" class="page active">
+    <div class="logo-wrap">
+      <span class="logo-emoji">🌟</span>
+      <div class="logo-title">칭찬합시다</div>
+      <div class="logo-sub" id="class-label">1학년 ○반</div>
+    </div>
+
+    <div class="card">
+      <div class="tabs" id="auth-tabs">
+        <button class="tab-btn active" onclick="switchAuthTab('login')">로그인</button>
+        <button class="tab-btn" onclick="switchAuthTab('signup')">회원가입</button>
+      </div>
+
+      <div id="auth-alert" class="alert"></div>
+
+      <!-- 로그인 폼 -->
+      <div id="login-form">
+        <div class="form-group">
+          <label class="field-label">이름</label>
+          <input type="text" id="login-name" placeholder="예) 홍길동" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="field-label">비밀번호</label>
+          <input type="password" id="login-pw" placeholder="비밀번호" autocomplete="current-password">
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn btn-primary" id="login-btn" onclick="doLogin()">로그인</button>
+        </div>
+        <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:12px">
+          담임 선생님은 별도 계정으로 로그인하세요
+        </p>
+      </div>
+
+      <!-- 회원가입 폼 -->
+      <div id="signup-form" style="display:none">
+        <div class="form-group">
+          <label class="field-label">이름 <span class="field-hint">아이디로 사용됩니다</span></label>
+          <input type="text" id="signup-name" placeholder="예) 홍길동" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="field-label">학번</label>
+          <input type="text" id="signup-sid" placeholder="예) 10101" inputmode="numeric">
+        </div>
+        <div class="form-group">
+          <label class="field-label">비밀번호 <span class="field-hint">4자리 이상</span></label>
+          <input type="password" id="signup-pw" placeholder="비밀번호 설정" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label class="field-label">비밀번호 확인</label>
+          <input type="password" id="signup-pw2" placeholder="비밀번호 재입력" autocomplete="new-password">
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn btn-primary" id="signup-btn" onclick="doSignup()">가입하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 학생 화면 ── -->
+  <div id="page-student" class="page">
+    <div class="page-header">
+      <div class="page-header-title">
+        <span id="student-welcome-name"></span>
+      </div>
+      <button class="btn btn-outline" onclick="doLogout()">로그아웃</button>
+    </div>
+
+    <div class="tabs" id="student-tabs">
+      <button class="tab-btn active" onclick="switchStudentTab('write')">✍️ 칭찬 작성</button>
+      <button class="tab-btn" onclick="switchStudentTab('history')">📋 내 기록</button>
+    </div>
+
+    <!-- 작성 탭 -->
+    <div id="student-write">
+      <div id="write-alert" class="alert"></div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">✏️</span> 칭찬 작성</div>
+
+        <div class="form-group">
+          <label class="field-label">칭찬 유형</label>
+          <select id="praise-type">
+            <option value="general">💬 일반 칭찬</option>
+            <option value="mentor">🤝 멘토·멘티 칭찬</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="field-label">칭찬할 친구 이름</label>
+          <input type="text" id="target-name" placeholder="친구 이름">
+        </div>
+        <div class="form-group">
+          <label class="field-label">칭찬 내용 <span class="field-hint">구체적으로 적어주세요</span></label>
+          <textarea id="praise-content" placeholder="예) 수학 개념을 모를 때 포기하지 않고 세 번이나 알기 쉽게 설명해줬어. 덕분에 시험에서 그 문제를 맞출 수 있었어."></textarea>
+        </div>
+        <div style="margin-top:4px">
+          <button class="btn btn-primary" id="submit-btn" onclick="submitPraise()">🚀 제출하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 내 기록 탭 -->
+    <div id="student-history" style="display:none">
+      <div id="my-list"></div>
+    </div>
+  </div>
+
+  <!-- ── 담임 화면 ── -->
+  <div id="page-teacher" class="page">
+    <div class="page-header">
+      <div class="page-header-title">
+        🏫 담임 대시보드
+        <span class="badge badge-teacher">선생님</span>
+      </div>
+      <button class="btn btn-outline" onclick="doLogout()">로그아웃</button>
+    </div>
+
+    <!-- 통계 -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">—</div>
+        <div class="stat-label">전체 칭찬</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-students">—</div>
+        <div class="stat-label">참여 학생</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-mentor">—</div>
+        <div class="stat-label">멘토·멘티</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-general">—</div>
+        <div class="stat-label">일반 칭찬</div>
+      </div>
+    </div>
+
+    <div class="tabs" id="teacher-tabs">
+      <button class="tab-btn active" onclick="switchTeacherTab('praises')">📜 칭찬 목록</button>
+      <button class="tab-btn" onclick="switchTeacherTab('members')">👥 회원 목록</button>
+    </div>
+
+    <!-- 칭찬 목록 탭 -->
+    <div id="teacher-praises">
+      <div class="card">
+        <div class="filter-row">
+          <select id="filter-type" onchange="renderTeacherList()">
+            <option value="all">전체 유형</option>
+            <option value="general">일반 칭찬</option>
+            <option value="mentor">멘토·멘티</option>
+          </select>
+          <input type="text" id="filter-name" placeholder="이름 검색..." oninput="renderTeacherList()">
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+          <button class="btn btn-green btn-sm" onclick="exportExcel()">📊 엑셀 내보내기</button>
+        </div>
+        <div id="teacher-list"></div>
+      </div>
+    </div>
+
+    <!-- 회원 목록 탭 -->
+    <div id="teacher-members" style="display:none">
+      <div class="card">
+        <div class="card-title"><span class="icon">👥</span> 가입한 학생 목록</div>
+        <div id="member-list"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- ══════════════════════════════════════════════
+     Firebase SDK
+══════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  addDoc,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* ════════════════════════════════════════
+   ✅ 여기에 Firebase 설정 붙여넣기
+   ════════════════════════════════════════ */
+const firebaseConfig = {
+  apiKey: "AIzaSyDhiYDnQ7HMZ09S2JqOCT-5jsF2NONY5eU",
+  authDomain: "compliment-7c157.firebaseapp.com",
+  projectId: "compliment-7c157",
+  storageBucket: "compliment-7c157.firebasestorage.app",
+  messagingSenderId: "447889431048",
+  appId: "1:447889431048:web:8706661a54ef2d05160fbd"
+};
+
+/* ════════════════════════════════════════
+   ✅ 담임 UID (Firebase Auth에서 확인)
+   ✅ 담임 이메일 (Auth에 직접 생성한 계정)
+   ════════════════════════════════════════ */
+const TEACHER_UID   = "QjToe86zTVZDZMcn85CtVKCXQQB2";
+const TEACHER_EMAIL = "teacher@praise.app"; // Auth에서 직접 만든 계정 이메일
+
+/* ════════════════════════════════════════
+   ✅ 학급 이름 (상단 표시용)
+   ════════════════════════════════════════ */
+const CLASS_LABEL = "1학년 5반";
+
+// ── 초기화 ──
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+document.getElementById('class-label').textContent = CLASS_LABEL;
+
+// ── 상태 ──
+let currentUser = null;
+let allPraisesCache = [];
+let unsubPraises = null;
+
+// ══════════════════════════════════════════
+// 유틸
+// ══════════════════════════════════════════
+function nameToEmail(name) {
+  // 이름을 이메일로 변환 (Firebase Auth는 이메일 필요)
+  const encoded = encodeURIComponent(name).replace(/%/g, '').toLowerCase();
+  return encoded + "@praise.app";
+}
+
+function showAlert(id, msg, type = 'error') {
+  const el = document.getElementById(id);
+  el.className = 'alert show alert-' + type;
+  el.textContent = msg;
+}
+function hideAlert(id) {
+  const el = document.getElementById(id);
+  el.className = 'alert';
+  el.textContent = '';
+}
+
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.disabled = loading;
+  if (loading) btn.dataset.origText = btn.textContent;
+  btn.textContent = loading ? '처리 중...' : btn.dataset.origText;
+}
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+}
+
+// ══════════════════════════════════════════
+// 인증
+// ══════════════════════════════════════════
+window.switchAuthTab = function(tab) {
+  document.getElementById('login-form').style.display  = tab === 'login'  ? 'block' : 'none';
+  document.getElementById('signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+  const tabs = document.querySelectorAll('#auth-tabs .tab-btn');
+  tabs[0].classList.toggle('active', tab === 'login');
+  tabs[1].classList.toggle('active', tab === 'signup');
+  hideAlert('auth-alert');
+};
+
+window.doSignup = async function() {
+  const name = document.getElementById('signup-name').value.trim();
+  const sid  = document.getElementById('signup-sid').value.trim();
+  const pw   = document.getElementById('signup-pw').value;
+  const pw2  = document.getElementById('signup-pw2').value;
+
+  hideAlert('auth-alert');
+  if (!name || !sid || !pw || !pw2) { showAlert('auth-alert', '모든 항목을 입력해주세요.'); return; }
+  if (pw.length < 4)  { showAlert('auth-alert', '비밀번호는 4자리 이상이어야 합니다.'); return; }
+  if (pw !== pw2)     { showAlert('auth-alert', '비밀번호가 일치하지 않습니다.'); return; }
+  if (!/^\d+$/.test(sid)) { showAlert('auth-alert', '학번은 숫자만 입력해주세요.'); return; }
+
+  setLoading('signup-btn', true);
+  try {
+    const email = nameToEmail(name);
+    const cred  = await createUserWithEmailAndPassword(auth, email, pw);
+    // Firestore에 프로필 저장
+    await setDoc(doc(db, 'users', cred.user.uid), {
+      uid: cred.user.uid,
+      name,
+      sid,
+      email,
+      joinedAt: serverTimestamp()
+    });
+    showAlert('auth-alert', '가입 완료! 로그인 탭에서 로그인하세요.', 'success');
+    ['signup-name','signup-sid','signup-pw','signup-pw2'].forEach(id => document.getElementById(id).value = '');
+    switchAuthTab('login');
+  } catch(e) {
+    const msg = e.code === 'auth/email-already-in-use'
+      ? '이미 가입된 이름입니다.'
+      : '가입 중 오류가 발생했습니다: ' + e.message;
+    showAlert('auth-alert', msg);
+  } finally {
+    setLoading('signup-btn', false);
+  }
+};
+
+window.doLogin = async function() {
+  const name = document.getElementById('login-name').value.trim();
+  const pw   = document.getElementById('login-pw').value;
+
+  hideAlert('auth-alert');
+  if (!name || !pw) { showAlert('auth-alert', '이름과 비밀번호를 입력해주세요.'); return; }
+
+  setLoading('login-btn', true);
+  try {
+    const email = nameToEmail(name);
+    await signInWithEmailAndPassword(auth, email, pw);
+    // onAuthStateChanged가 페이지 전환 처리
+  } catch(e) {
+    // 담임은 별도 이메일로 시도
+    try {
+      await signInWithEmailAndPassword(auth, TEACHER_EMAIL, pw);
+    } catch(e2) {
+      showAlert('auth-alert', '이름 또는 비밀번호가 올바르지 않습니다.');
+      setLoading('login-btn', false);
+    }
+  } finally {
+    // 성공 시 onAuthStateChanged가 처리
+    setTimeout(() => setLoading('login-btn', false), 1500);
+  }
+};
+
+window.doLogout = async function() {
+  if (unsubPraises) { unsubPraises(); unsubPraises = null; }
+  await signOut(auth);
+  currentUser = null;
+  showPage('auth');
+  switchAuthTab('login');
+};
+
+// ── 로그인 상태 감지 ──
+onAuthStateChanged(auth, async user => {
+  if (!user) { showPage('auth'); return; }
+
+  if (user.uid === TEACHER_UID) {
+    currentUser = { uid: user.uid, role: 'teacher', name: '선생님' };
+    showPage('teacher');
+    loadTeacherData();
+  } else {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (!snap.exists()) { await signOut(auth); return; }
+    const data = snap.data();
+    currentUser = { uid: user.uid, role: 'student', name: data.name, sid: data.sid };
+    document.getElementById('student-welcome-name').textContent = data.name + ' 학생 👋';
+    showPage('student');
+    loadMyPraises();
+  }
+});
+
+// ══════════════════════════════════════════
+// 학생 — 칭찬 제출
+// ══════════════════════════════════════════
+window.submitPraise = async function() {
+  const type    = document.getElementById('praise-type').value;
+  const target  = document.getElementById('target-name').value.trim();
+  const content = document.getElementById('praise-content').value.trim();
+
+  hideAlert('write-alert');
+  if (!target || !content) {
+    showAlert('write-alert', '친구 이름과 칭찬 내용을 모두 입력해주세요.');
+    return;
+  }
+  if (content.length < 20) {
+    showAlert('write-alert', '칭찬 내용을 좀 더 구체적으로 20자 이상 작성해주세요.');
+    return;
+  }
+
+  setLoading('submit-btn', true);
+  try {
+    await addDoc(collection(db, 'praises'), {
+      authorUid:   currentUser.uid,
+      authorName:  currentUser.name,
+      authorSid:   currentUser.sid,
+      type,
+      targetName:  target,
+      content,
+      createdAt:   serverTimestamp()
+    });
+    document.getElementById('target-name').value   = '';
+    document.getElementById('praise-content').value = '';
+    showAlert('write-alert', '칭찬이 제출되었습니다! 🎉', 'success');
+    setTimeout(() => hideAlert('write-alert'), 3000);
+  } catch(e) {
+    showAlert('write-alert', '제출 실패: ' + e.message);
+  } finally {
+    setLoading('submit-btn', false);
+  }
+};
+
+// ── 내 칭찬 실시간 조회 ──
+function loadMyPraises() {
+  if (unsubPraises) unsubPraises();
+  const q = query(
+    collection(db, 'praises'),
+    where('authorUid', '==', currentUser.uid),
+    orderBy('createdAt', 'desc')
+  );
+  unsubPraises = onSnapshot(q, snap => {
+    allPraisesCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderMyPraises();
+  });
+}
+
+function renderMyPraises() {
+  const list = document.getElementById('my-list');
+  if (allPraisesCache.length === 0) {
+    list.innerHTML = `<div class="empty-state"><span class="empty-icon">🌱</span>아직 작성한 칭찬이 없어요.<br>친구를 칭찬하러 가볼까요?</div>`;
+    return;
+  }
+  list.innerHTML = allPraisesCache.map(p => praiseItemHTML(p)).join('');
+}
+
+// ══════════════════════════════════════════
+// 담임 — 전체 데이터 로드
+// ══════════════════════════════════════════
+function loadTeacherData() {
+  if (unsubPraises) unsubPraises();
+  const q = query(collection(db, 'praises'), orderBy('createdAt', 'desc'));
+  unsubPraises = onSnapshot(q, snap => {
+    allPraisesCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    updateStats();
+    renderTeacherList();
+  });
+  loadMemberList();
+}
+
+function updateStats() {
+  const praises = allPraisesCache;
+  const authors = new Set(praises.map(p => p.authorUid));
+  document.getElementById('stat-total').textContent   = praises.length;
+  document.getElementById('stat-students').textContent = authors.size;
+  document.getElementById('stat-mentor').textContent   = praises.filter(p => p.type === 'mentor').length;
+  document.getElementById('stat-general').textContent  = praises.filter(p => p.type === 'general').length;
+}
+
+window.renderTeacherList = function() {
+  const typeFilter = document.getElementById('filter-type').value;
+  const nameFilter = document.getElementById('filter-name').value.trim();
+  let filtered = allPraisesCache;
+  if (typeFilter !== 'all') filtered = filtered.filter(p => p.type === typeFilter);
+  if (nameFilter) {
+    const kw = nameFilter.toLowerCase();
+    filtered = filtered.filter(p =>
+      (p.authorName || '').toLowerCase().includes(kw) ||
+      (p.targetName || '').toLowerCase().includes(kw) ||
+      (p.authorSid  || '').includes(kw)
+    );
+  }
+  const list = document.getElementById('teacher-list');
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state"><span class="empty-icon">🔍</span>조건에 맞는 칭찬이 없습니다.</div>`;
+    return;
+  }
+  list.innerHTML = filtered.map(p => praiseItemHTML(p, true)).join('');
+};
+
+// ── 회원 목록 ──
+async function loadMemberList() {
+  const list = document.getElementById('member-list');
+  list.innerHTML = `<div class="loading"><div class="spinner"></div>불러오는 중...</div>`;
+  try {
+    const snap = await getDocs(collection(db, 'users'));
+    const users = snap.docs.map(d => d.data());
+
+    // 칭찬 횟수 카운트
+    const praisedBy = {};   // 칭찬한 횟수
+    const praisedTo = {};   // 칭찬받은 횟수
+    allPraisesCache.forEach(p => {
+      praisedBy[p.authorName] = (praisedBy[p.authorName] || 0) + 1;
+      praisedTo[p.targetName] = (praisedTo[p.targetName] || 0) + 1;
+    });
+
+    if (users.length === 0) {
+      list.innerHTML = `<div class="empty-state"><span class="empty-icon">👤</span>아직 가입한 학생이 없습니다.</div>`;
+      return;
+    }
+
+    // 학번 순 정렬
+    users.sort((a, b) => (a.sid || '').localeCompare(b.sid || ''));
+
+    list.innerHTML = users.map(u => `
+      <div class="user-item">
+        <div class="user-info">
+          <div class="user-avatar">${(u.name || '?')[0]}</div>
+          <div>
+            <div class="user-name">${u.name}</div>
+            <div class="user-sid">학번 ${u.sid}</div>
+          </div>
+        </div>
+        <div class="user-count">
+          칭찬함 <strong>${praisedBy[u.name] || 0}</strong>건 ·
+          받음 <strong>${praisedTo[u.name] || 0}</strong>건
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    list.innerHTML = `<div class="empty-state">불러오기 실패: ${e.message}</div>`;
+  }
+}
+
+// ══════════════════════════════════════════
+// 탭 전환
+// ══════════════════════════════════════════
+window.switchStudentTab = function(tab) {
+  document.getElementById('student-write').style.display   = tab === 'write'   ? 'block' : 'none';
+  document.getElementById('student-history').style.display = tab === 'history' ? 'block' : 'none';
+  const tabs = document.querySelectorAll('#student-tabs .tab-btn');
+  tabs[0].classList.toggle('active', tab === 'write');
+  tabs[1].classList.toggle('active', tab === 'history');
+  if (tab === 'history') renderMyPraises();
+};
+
+window.switchTeacherTab = function(tab) {
+  document.getElementById('teacher-praises').style.display = tab === 'praises' ? 'block' : 'none';
+  document.getElementById('teacher-members').style.display = tab === 'members' ? 'block' : 'none';
+  const tabs = document.querySelectorAll('#teacher-tabs .tab-btn');
+  tabs[0].classList.toggle('active', tab === 'praises');
+  tabs[1].classList.toggle('active', tab === 'members');
+  if (tab === 'members') loadMemberList();
+};
+
+// ══════════════════════════════════════════
+// 공통 칭찬 아이템 HTML
+// ══════════════════════════════════════════
+function praiseItemHTML(p, showAuthor = false) {
+  const isM = p.type === 'mentor';
+  const badgeClass = isM ? 'badge-mentor' : 'badge-general';
+  const badgeLabel = isM ? '🤝 멘토·멘티' : '💬 일반 칭찬';
+  const date = p.createdAt?.toDate
+    ? p.createdAt.toDate().toLocaleDateString('ko-KR')
+    : '날짜 없음';
+  const from = showAuthor
+    ? `<span>${p.authorSid || ''} <strong>${p.authorName || ''}</strong></span>
+       <span class="praise-arrow">→</span>`
+    : '';
+  return `
+    <div class="praise-item ${p.type}">
+      <span class="badge ${badgeClass}">${badgeLabel}</span>
+      <div class="praise-meta">
+        ${from}
+        <strong>${p.targetName}</strong>에게 · ${date}
+      </div>
+      <div class="praise-content">${p.content}</div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════
+// 엑셀 내보내기
+// ══════════════════════════════════════════
+window.exportExcel = function() {
+  if (allPraisesCache.length === 0) { alert('내보낼 데이터가 없습니다.'); return; }
+
+  // 칭찬 횟수 집계
+  const praisedBy  = {};
+  const praisedTo  = {};
+  const sidMap     = {};
+  allPraisesCache.forEach(p => {
+    praisedBy[p.authorName] = (praisedBy[p.authorName] || 0) + 1;
+    praisedTo[p.targetName] = (praisedTo[p.targetName] || 0) + 1;
+    if (p.authorSid) sidMap[p.authorName] = p.authorSid;
+  });
+
+  // 시트1: 전체 칭찬 목록
+  const rows1 = [['학번','이름','유형','칭찬받은 친구','칭찬 내용','작성일']];
+  allPraisesCache.forEach(p => {
+    const date = p.createdAt?.toDate
+      ? p.createdAt.toDate().toLocaleDateString('ko-KR') : '';
+    rows1.push([
+      p.authorSid || '',
+      p.authorName || '',
+      p.type === 'mentor' ? '멘토·멘티' : '일반 칭찬',
+      p.targetName || '',
+      p.content || '',
+      date
+    ]);
+  });
+
+  // 시트2: 학생별 통계
+  const names = new Set([...Object.keys(praisedBy), ...Object.keys(praisedTo)]);
+  const rows2 = [['학번','이름','칭찬한 횟수','칭찬받은 횟수']];
+  [...names].sort().forEach(n => {
+    rows2.push([sidMap[n] || '', n, praisedBy[n] || 0, praisedTo[n] || 0]);
+  });
+
+  // XLSX 생성 (CDN)
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  script.onload = () => {
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(rows1), '전체 칭찬 목록');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(rows2), '학생별 통계');
+    const today = new Date().toLocaleDateString('ko-KR').replace(/\. /g,'-').replace('.','');
+    XLSX.writeFile(wb, `칭찬합시다_${today}.xlsx`);
+  };
+  document.head.appendChild(script);
+};
+
+</script>
+</body>
+</html>
